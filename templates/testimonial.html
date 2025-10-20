@@ -268,47 +268,168 @@
 </div>
 
 <!-- Testimonial Section -->
-<div class="testimonial-section wow fadeInUp" data-wow-delay="0.3s">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h6 class="section-title px-3">Testimonials</h6>
-      <h1 class="font-merienda">What Our Clients Say</h1>
-    </div>
-    <div class="owl-carousel testimonial-carousel position-relative">
+{% load static %}
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+  <div class="container text-center">
+    <h3 class="reviews-title">Reviews</h3>
+    <p class="reviews-subtitle">Discover what our clients say about their journeys</p>
+
+    <div class="owl-carousel review-carousel">
       {% for test in testimonial %}
-      <div class="testimonial-item wow fadeInUp" data-wow-delay="{{ forloop.counter|floatformat:1|add:'0.1' }}s">
-        <div class="testimonial-img">
+      <div class="review-card">
+        <!-- Profile Image -->
+        <div class="review-image">
           <img src="{{ test.image|default:'{% static "img/default-testimonial.jpg" %}' }}" alt="{{ test.Full_name }}">
         </div>
-        <h5>{{ test.Full_name }}</h5>
-        <p class="country">{{ test.country }}</p>
-        <p class="description">{{ test.description }}</p>
+
+        <!-- Review Text -->
+        <p class="review-text">
+          {{ test.description }}
+        </p>
+
+        <!-- Reviewer Info -->
+        <h5 class="review-name">{{ test.Full_name }}</h5>
+        <p class="review-source">Google Reviews</p>
+        <div class="review-stars">
+          ⭐⭐⭐⭐⭐
+        </div>
       </div>
       {% endfor %}
     </div>
-  </div>
-</div>
 
-<!-- Scripts for Animate.css & Owl Carousel -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+    <div class="review-controls mt-3">
+      <button class="review-btn prev">‹ Prev</button>
+      <button class="review-btn next">Next ›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CSS ================= -->
+<style>
+.reviews-section {
+  background: url("{% static 'img/birdwatching.jpg' %}") center/cover no-repeat;
+  padding: 100px 0;
+  color: white;
+  position: relative;
+}
+
+.reviews-title {
+  color: #f6b10c;
+  font-size: 28px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.reviews-subtitle {
+  color: #eee;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+
+.review-card {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.review-image {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px auto;
+}
+
+.review-image img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f6b10c;
+  box-shadow: 0 0 15px rgba(246, 177, 12, 0.4);
+}
+
+.review-text {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review-name {
+  color: #f6b10c;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.review-source {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.review-stars {
+  font-size: 18px;
+  color: #ffcc00;
+}
+
+.review-btn {
+  background: #f6b10c;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin: 5px;
+  cursor: pointer;
+  color: #000;
+  font-weight: 600;
+}
+
+.review-btn:hover {
+  background: #ffc107;
+}
+
+.owl-carousel .owl-nav {
+  display: none;
+}
+</style>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
 <script>
-  $(document).ready(function() {
-    $('.testimonial-carousel').owlCarousel({
+  $(document).ready(function(){
+    $(".review-carousel").owlCarousel({
+      items: 1,
       loop: true,
-      margin: 20,
-      nav: true,
       autoplay: true,
-      autoplayTimeout: 4000,
+      autoplayTimeout: 6000,
       autoplayHoverPause: true,
-      responsive: {
-        0: { items: 1 },
-        768: { items: 2 },
-        992: { items: 3 }
-      }
+      dots: false,
+      nav: false,
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn'
+    });
+
+    $(".review-btn.prev").click(function() {
+      $(".review-carousel").trigger('prev.owl.carousel');
+    });
+
+    $(".review-btn.next").click(function() {
+      $(".review-carousel").trigger('next.owl.carousel');
     });
   });
 </script>
+
+
+
 {% endblock %}
