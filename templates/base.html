@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- SEO Basics -->
   <meta name="description" content="Embark on thrilling journeys, discover hidden gems, and create unforgettable memories in every corner of Tanzania and beyond.">
-  <meta name="keywords" content=" Tanzania adventures, safari, hiking, Kilimanjaro, Serengeti, Zanzibar, travel Africa">
+  <meta name="keywords" content="Tanzania adventures, safari, hiking, Kilimanjaro, Serengeti, Zanzibar, travel Africa">
   <meta name="author" content="Emadventure Adventure Tanzania">
   <meta name="robots" content="index, follow">
   <!-- Open Graph Tags -->
@@ -23,7 +23,6 @@
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
   <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
-
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Emadventure Adventure Tanzania" />
@@ -44,18 +43,18 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <style>
     :root {
-      --primary: #FF4500; /* Fiery orange */
-      --secondary: #228B22; /* Forest green */
-      --accent: #FFD700; /* Golden shine */
-      --dark: #1C2526; /* Deep charcoal */
-      --light: #F8F1E9; /* Warm cream */
+      --teal: #1f7a8c; /* Tropical teal */
+      --coral: #ff6f61; /* Vibrant coral */
+      --golden-sand: #f4c095; /* Warm golden sand */
+      --navy: #14213d; /* Deep navy */
+      --light: #f9f6f2; /* Soft white */
       --shadow-luxe: 0 6px 15px rgba(0, 0, 0, 0.2);
       --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
     }
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       background: linear-gradient(180deg, var(--light), #e0f7fa);
-      color: var(--dark);
+      color: var(--navy);
       overflow-x: hidden;
       position: relative;
       -webkit-tap-highlight-color: transparent;
@@ -73,7 +72,7 @@
     }
     /* Navigation Bar */
     .premium-navbar {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
       box-shadow: var(--shadow-luxe);
       padding: clamp(0.5rem, 2vw, 0.8rem) 0;
       position: sticky;
@@ -82,15 +81,15 @@
       transition: all 0.3s var(--transition-ease);
     }
     .premium-navbar.scrolled {
-      background: rgba(28, 37, 38, 0.95);
+      background: rgba(20, 33, 61, 0.95);
       backdrop-filter: blur(8px);
       padding: clamp(0.4rem, 1.5vw, 0.6rem) 0;
     }
     .navbar-brand {
-      font-family: 'Merienda', cursive;
+      font-family: 'Lora', serif;
       font-size: clamp(1.2rem, 4vw, 1.8rem);
-      font-weight: 900;
-      color: var(--accent) !important;
+      font-weight: 700;
+      color: var(--golden-sand) !important;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
@@ -99,13 +98,13 @@
       width: clamp(40px, 8vw, 50px);
       height: clamp(40px, 8vw, 50px);
       border-radius: 50%;
-      border: 3px solid var(--accent);
+      border: 3px solid var(--golden-sand);
       margin-right: 0.75rem;
       transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
     }
     .navbar-brand:hover img, .navbar-brand:active img {
       transform: rotate(10deg) scale(1.1);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 15px rgba(244, 192, 149, 0.5);
     }
     .navbar-toggler {
       border: none;
@@ -132,7 +131,7 @@
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 69, 0, 0.2);
+      border: 1px solid rgba(31, 122, 140, 0.2);
       font-size: clamp(0.85rem, 2.2vw, 0.95rem);
       touch-action: manipulation;
     }
@@ -141,10 +140,10 @@
       font-size: clamp(0.85rem, 2.2vw, 1rem);
     }
     .nav-link:hover, .nav-link.active, .nav-link:active {
-      color: var(--accent) !important;
-      background: linear-gradient(135deg, rgba(255, 69, 0, 0.3), rgba(255, 215, 0, 0.2));
+      color: var(--golden-sand) !important;
+      background: linear-gradient(135deg, rgba(31, 122, 140, 0.3), rgba(244, 192, 149, 0.2));
       transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+      box-shadow: 0 0 20px rgba(31, 122, 140, 0.5);
     }
     .nav-link::after {
       content: '';
@@ -153,7 +152,7 @@
       left: 50%;
       width: 0;
       height: 2px;
-      background: var(--accent);
+      background: var(--golden-sand);
       transition: all 0.3s var(--transition-ease);
       transform: translateX(-50%);
     }
@@ -161,7 +160,7 @@
       width: 70%;
     }
     .dropdown-menu {
-      background: linear-gradient(135deg, var(--dark), var(--secondary));
+      background: linear-gradient(135deg, var(--navy), var(--teal));
       border: none;
       box-shadow: var(--shadow-luxe);
       border-radius: 12px;
@@ -183,12 +182,12 @@
       font-size: clamp(0.85rem, 2vw, 0.95rem);
     }
     .dropdown-item:hover, .dropdown-item:active {
-      background: rgba(255, 69, 0, 0.3);
-      color: var(--accent);
+      background: rgba(31, 122, 140, 0.3);
+      color: var(--golden-sand);
       transform: translateX(5px);
     }
     .book-btn {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--teal), var(--golden-sand));
       color: #ffffff;
       padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2.5vw, 1.5rem);
       border-radius: 30px;
@@ -207,7 +206,7 @@
     }
     .book-btn:hover, .book-btn:active {
       transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(255, 69, 0, 0.6);
+      box-shadow: 0 6px 20px rgba(31, 122, 140, 0.6);
     }
     .navbar-decorator {
       position: absolute;
@@ -218,8 +217,8 @@
       background: repeating-linear-gradient(
         to right,
         transparent 0px,
-        var(--accent) 0px,
-        var(--accent) 4px,
+        var(--golden-sand) 0px,
+        var(--golden-sand) 4px,
         transparent 4px,
         transparent 8px
       );
@@ -237,7 +236,7 @@
       left: -100%;
       width: clamp(260px, 90vw, 300px);
       height: 100vh;
-      background: linear-gradient(180deg, var(--dark), var(--secondary));
+      background: linear-gradient(180deg, var(--navy), var(--teal));
       transition: left 0.4s var(--transition-ease);
       z-index: 1040;
       box-shadow: 3px 0 20px rgba(0, 0, 0, 0.4);
@@ -254,8 +253,8 @@
     }
     .sidebar-header {
       padding: clamp(1rem, 3vw, 1.2rem);
-      background: linear-gradient(135deg, rgba(255, 69, 0, 0.3), transparent);
-      border-bottom: 2px solid rgba(255, 69, 0, 0.4);
+      background: linear-gradient(135deg, rgba(31, 122, 140, 0.3), transparent);
+      border-bottom: 2px solid rgba(31, 122, 140, 0.4);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -264,12 +263,12 @@
       width: clamp(40px, 8vw, 50px);
       height: clamp(40px, 8vw, 50px);
       border-radius: 50%;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      border: 2px solid var(--golden-sand);
+      box-shadow: 0 0 10px rgba(244, 192, 149, 0.3);
     }
     .sidebar-header h4 {
-      color: var(--accent);
-      font-family: 'Merienda', cursive;
+      color: var(--golden-sand);
+      font-family: 'Lora', serif;
       font-size: clamp(1.2rem, 3.5vw, 1.5rem);
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
@@ -284,10 +283,10 @@
       line-height: 1;
     }
     .close-sidebar:hover, .close-sidebar:active {
-      color: var(--accent);
+      color: var(--golden-sand);
       transform: rotate(90deg);
-      background: rgba(255, 69, 0, 0.3);
-      box-shadow: 0 0 8px rgba(255, 69, 0, 0.4);
+      background: rgba(31, 122, 140, 0.3);
+      box-shadow: 0 0 8px rgba(31, 122, 140, 0.4);
     }
     .sidebar-nav {
       list-style: none;
@@ -306,9 +305,9 @@
       touch-action: manipulation;
     }
     .sidebar-nav a:hover, .sidebar-nav a:active {
-      color: var(--accent);
-      background: rgba(255, 69, 0, 0.2);
-      border-left: 3px solid var(--accent);
+      color: var(--golden-sand);
+      background: rgba(31, 122, 140, 0.2);
+      border-left: 3px solid var(--golden-sand);
       transform: translateX(3px);
     }
     .sidebar-nav i {
@@ -321,7 +320,7 @@
     }
     .sidebar-submenu {
       list-style: none;
-      background: rgba(255, 69, 0, 0.1);
+      background: rgba(31, 122, 140, 0.1);
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s var(--transition-ease);
@@ -337,8 +336,8 @@
       border-left: 2px solid transparent;
     }
     .sidebar-submenu li a:hover, .sidebar-submenu li a:active {
-      border-left: 2px solid var(--accent);
-      background: rgba(255, 69, 0, 0.2);
+      border-left: 2px solid var(--golden-sand);
+      background: rgba(31, 122, 140, 0.2);
     }
     .sidebar-overlay {
       position: fixed;
@@ -359,7 +358,7 @@
     /* Hero Section */
     .hero-bg {
       background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("{% static 'img/booking.jpg' %}") center/cover no-repeat;
-      height: clamp(60vh, 80vw, 70vh);
+      height: clamp(50vh, 70vw, 60vh);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -374,7 +373,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255, 69, 0, 0.2), transparent);
+      background: radial-gradient(circle, rgba(31, 122, 140, 0.2), transparent);
       animation: pulseBackground 6s infinite ease-in-out;
     }
     @keyframes pulseBackground {
@@ -383,7 +382,7 @@
       100% { opacity: 0.3; }
     }
     .hero-bg h1 {
-      font-family: 'Merienda', cursive;
+      font-family: 'Lora', serif;
       font-size: clamp(2rem, 6vw, 3.5rem);
       color: #ffffff;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
@@ -396,7 +395,7 @@
       content: '\f6c0';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
-      color: var(--accent);
+      color: var(--golden-sand);
       font-size: clamp(1.2rem, 3.5vw, 1.5rem);
       position: absolute;
       top: -25px;
@@ -405,14 +404,14 @@
     }
     .hero-bg p {
       font-size: clamp(1rem, 2.8vw, 1.4rem);
-      color: var(--accent);
+      color: var(--golden-sand);
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
       margin: clamp(1rem, 2.5vw, 1.5rem) 0;
       animation: fadeInUp 2s ease-out;
       max-width: 95%;
     }
     .btn-warning {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--teal), var(--golden-sand));
       border: none;
       padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.5rem, 3vw, 2rem);
       font-size: clamp(0.85rem, 2.2vw, 0.95rem);
@@ -431,9 +430,9 @@
       font-size: clamp(0.85rem, 2.2vw, 1rem);
     }
     .btn-warning:hover, .btn-warning:active {
-      background: linear-gradient(135deg, var(--accent), var(--primary));
+      background: linear-gradient(135deg, var(--golden-sand), var(--teal));
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(255, 69, 0, 0.7);
+      box-shadow: 0 8px 20px rgba(31, 122, 140, 0.7);
     }
     /* Card Styles */
     .card-dest {
@@ -446,7 +445,7 @@
     }
     .card-dest:hover, .card-dest:active {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(255, 69, 0, 0.3);
+      box-shadow: 0 8px 25px rgba(31, 122, 140, 0.3);
     }
     .card-dest img {
       width: 100%;
@@ -474,14 +473,14 @@
     }
     .badge-offer {
       left: 10px;
-      background: var(--primary);
+      background: var(--teal);
     }
     .badge-scenic {
       right: 10px;
-      background: var(--secondary);
+      background: var(--coral);
     }
     .animated-view-btn {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--teal), var(--golden-sand));
       color: #ffffff;
       padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
       font-weight: 600;
@@ -500,11 +499,11 @@
     }
     .animated-view-btn:hover, .animated-view-btn:active {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255, 69, 0, 0.7);
+      box-shadow: 0 8px 20px rgba(31, 122, 140, 0.7);
     }
     .location-tag {
       background: rgba(255, 255, 255, 0.9);
-      color: var(--dark);
+      color: var(--navy);
       padding: clamp(5px, 1.5vw, 7px) clamp(8px, 2vw, 12px);
       font-size: clamp(0.7rem, 1.8vw, 0.8rem);
       border-radius: 20px;
@@ -519,11 +518,11 @@
     }
     /* Enhanced Footer */
     .footer {
-      background: linear-gradient(180deg, var(--dark), var(--secondary));
+      background: linear-gradient(180deg, var(--navy), var(--teal));
       color: #ffffff;
       padding: clamp(1.5rem, 4vw, 2.5rem) 0;
       position: relative;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid var(--golden-sand);
     }
     .footer::after {
       content: '';
@@ -535,8 +534,8 @@
       background: repeating-linear-gradient(
         to right,
         transparent 0px,
-        var(--accent) 0px,
-        var(--accent) 3px,
+        var(--golden-sand) 0px,
+        var(--golden-sand) 3px,
         transparent 3px,
         transparent 6px
       );
@@ -544,8 +543,8 @@
       animation: dottedSparkle 2s infinite ease-in-out;
     }
     .footer h4 {
-      font-family: 'Merienda', cursive;
-      color: var(--accent);
+      font-family: 'Lora', serif;
+      color: var(--golden-sand);
       font-size: clamp(1.1rem, 3vw, 1.4rem);
       margin-bottom: 1rem;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -566,14 +565,14 @@
       transition: transform 0.3s var(--transition-ease);
     }
     .footer a.btn-link:hover, .footer a.btn-link:active {
-      color: var(--accent);
+      color: var(--golden-sand);
       transform: translateX(3px);
     }
     .footer a.btn-link:hover i, .footer a.btn-link:active i {
       transform: scale(1.1);
     }
     .footer .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--teal), var(--golden-sand));
       border: none;
       border-radius: 20px;
       padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(0.8rem, 2vw, 1.2rem);
@@ -591,13 +590,13 @@
       font-size: clamp(0.85rem, 2vw, 0.95rem);
     }
     .footer .btn-primary:hover, .footer .btn-primary:active {
-      background: linear-gradient(135deg, var(--accent), var(--primary));
+      background: linear-gradient(135deg, var(--golden-sand), var(--teal));
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(255, 69, 0, 0.5);
+      box-shadow: 0 6px 15px rgba(31, 122, 140, 0.5);
     }
     .footer .btn-social {
       background: rgba(255, 255, 255, 0.15);
-      border: 1px solid var(--accent);
+      border: 1px solid var(--golden-sand);
       border-radius: 50%;
       width: clamp(30px, 6vw, 35px);
       height: clamp(30px, 6vw, 35px);
@@ -609,10 +608,10 @@
       touch-action: manipulation;
     }
     .footer .btn-social:hover, .footer .btn-social:active {
-      background: var(--accent);
-      color: var(--dark);
+      background: var(--golden-sand);
+      color: var(--navy);
       transform: scale(1.1);
-      box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 8px rgba(244, 192, 149, 0.4);
     }
     .footer .gallery-grid {
       display: grid;
@@ -627,7 +626,7 @@
     }
     .footer .gallery-grid img:hover, .footer .gallery-grid img:active {
       transform: scale(1.05);
-      box-shadow: 0 3px 10px rgba(255, 69, 0, 0.2);
+      box-shadow: 0 3px 10px rgba(31, 122, 140, 0.2);
     }
     .footer .newsletter-form {
       position: relative;
@@ -636,7 +635,7 @@
     }
     .footer .newsletter-form input {
       background: #ffffff;
-      border: 1px solid var(--accent);
+      border: 1px solid var(--golden-sand);
       border-radius: 20px;
       padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(0.8rem, 2vw, 1rem);
       font-size: clamp(0.8rem, 2vw, 0.9rem);
@@ -645,11 +644,11 @@
       width: 100%;
     }
     .footer .newsletter-form input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 0.15rem rgba(255, 69, 0, 0.2);
+      border-color: var(--teal);
+      box-shadow: 0 0 0 0.15rem rgba(31, 122, 140, 0.2);
     }
     .footer .newsletter-form button {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--teal), var(--golden-sand));
       border: none;
       border-radius: 20px;
       padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(0.8rem, 2vw, 1rem);
@@ -664,23 +663,23 @@
       touch-action: manipulation;
     }
     .footer .newsletter-form button:hover, .footer .newsletter-form button:active {
-      background: linear-gradient(135deg, var(--accent), var(--primary));
+      background: linear-gradient(135deg, var(--golden-sand), var(--teal));
       transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 5px 12px rgba(255, 69, 0, 0.5);
+      box-shadow: 0 5px 12px rgba(31, 122, 140, 0.5);
     }
     .footer .copyright {
-      border-top: 1px solid rgba(255, 215, 0, 0.15);
+      border-top: 1px solid rgba(244, 192, 149, 0.15);
       padding: clamp(0.8rem, 2vw, 1.2rem) 0;
       margin-top: clamp(1rem, 2.5vw, 1.5rem);
       font-size: clamp(0.75rem, 1.8vw, 0.85rem);
     }
     .footer .copyright a {
-      color: var(--accent);
+      color: var(--golden-sand);
       text-decoration: none;
       transition: all 0.3s var(--transition-ease);
     }
     .footer .copyright a:hover, .footer .copyright a:active {
-      color: var(--primary);
+      color: var(--teal);
       text-decoration: underline;
     }
     .footer .footer-menu a {
@@ -697,14 +696,14 @@
       font-size: clamp(0.8rem, 1.8vw, 0.9rem);
     }
     .footer .footer-menu a:hover, .footer .footer-menu a:active {
-      color: var(--accent);
+      color: var(--golden-sand);
       transform: translateY(-2px);
     }
     /* WhatsApp Button */
     .whatsapp-icon {
       position: fixed;
       bottom: clamp(15px, 4vw, 20px);
-      right: clamp(15px, 4vw, 20px);
+      left: clamp(15px, 4vw, 20px); /* Moved to left */
       z-index: 1000;
       cursor: pointer;
       animation: float 3s ease-in-out infinite;
@@ -725,11 +724,11 @@
     .whatsapp-chat-popup {
       position: fixed;
       bottom: clamp(70px, 12vw, 90px);
-      right: clamp(15px, 4vw, 20px);
+      left: clamp(15px, 4vw, 20px); /* Moved to left */
       width: clamp(200px, 85vw, 260px);
       border-radius: 12px;
       box-shadow: var(--shadow-luxe);
-      background: linear-gradient(135deg, var(--dark), var(--secondary));
+      background: linear-gradient(135deg, var(--navy), var(--teal));
       opacity: 0;
       visibility: hidden;
       transform: translateY(15px);
@@ -743,7 +742,7 @@
       transform: translateY(0);
     }
     .chat-header {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--teal), var(--golden-sand));
       color: #ffffff;
       border-radius: 12px 12px 0 0;
       padding: clamp(6px, 2vw, 10px);
@@ -761,6 +760,7 @@
       font-size: clamp(0.8rem, 2vw, 0.9rem);
       flex-grow: 1;
       color: #ffffff;
+      font-family: 'Open Sans', sans-serif;
     }
     .chat-header .close-chat {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -770,11 +770,11 @@
       padding: clamp(0.3rem, 1vw, 0.5rem);
     }
     .chat-header .close-chat:hover, .chat-header .close-chat:active {
-      color: var(--accent);
+      color: var(--golden-sand);
       transform: rotate(90deg);
     }
     .chat-button {
-      background: var(--secondary);
+      background: var(--teal);
       border-radius: 0 0 12px 12px;
       padding: clamp(6px, 2vw, 10px);
       color: #ffffff;
@@ -792,7 +792,7 @@
       margin-right: 6px;
     }
     .chat-button:hover, .chat-button:active {
-      background: #1a6b1a;
+      background: var(--coral);
       transform: scale(1.03);
     }
     /* Animations */
@@ -851,7 +851,7 @@
         font-size: clamp(0.75rem, 1.8vw, 0.85rem);
       }
       .hero-bg {
-        height: clamp(50vh, 70vw, 60vh);
+        height: clamp(40vh, 60vw, 50vh);
       }
       .hero-bg h1 {
         font-size: clamp(1.8rem, 5vw, 2.5rem);
@@ -895,8 +895,6 @@
         font-size: clamp(0.75rem, 1.8vw, 0.85rem);
       }
       .footer .btn-social {
-        width: clamp(28px, 5.5vw, 32px);
-        height: clamp(28px, 5.5vw, 32px);
         margin: 0.2rem;
       }
       .footer .gallery-grid {
@@ -916,7 +914,7 @@
       }
       .whatsapp-icon {
         bottom: clamp(10px, 3vw, 15px);
-        right: clamp(10px, 3vw, 15px);
+        left: clamp(10px, 3vw, 15px); /* Moved to left */
       }
       .whatsapp-icon img {
         width: clamp(35px, 7vw, 45px);
@@ -925,7 +923,7 @@
       .whatsapp-chat-popup {
         width: clamp(180px, 90vw, 240px);
         bottom: clamp(60px, 10vw, 80px);
-        right: clamp(10px, 3vw, 15px);
+        left: clamp(10px, 3vw, 15px); /* Moved to left */
       }
       .chat-header {
         padding: clamp(5px, 1.5vw, 8px);
@@ -967,6 +965,9 @@
         padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1rem) !important;
         font-size: clamp(0.8rem, 2vw, 0.9rem);
       }
+      .hero-bg {
+        height: clamp(45vh, 65vw, 55vh);
+      }
       .hero-bg h1 {
         font-size: clamp(2rem, 5.5vw, 3rem);
       }
@@ -978,6 +979,9 @@
       }
       .footer .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .footer .newsletter-form {
+        max-width: 85%;
       }
     }
     @media (min-width: 768px) and (max-width: 991px) {
@@ -993,6 +997,9 @@
       .nav-link {
         padding: clamp(0.5rem, 1.8vw, 0.7rem) clamp(1rem, 2.5vw, 1.2rem) !important;
         font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+      }
+      .hero-bg {
+        height: clamp(50vh, 70vw, 60vh);
       }
       .hero-bg h1 {
         font-size: clamp(2.2rem, 5.5vw, 3.2rem);
@@ -1051,19 +1058,19 @@
 <body>
   <!-- Spinner -->
   <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-border" style="width: 2.5rem; height: 2.5rem; border-color: var(--primary);" role="status">
+    <div class="spinner-border" style="width: 2.5rem; height: 2.5rem; border-color: var(--teal);" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
   <!-- Top Bar -->
-  <div class="container-fluid top-bar px-4 d-none d-lg-block" style="background: var(--dark);">
+  <div class="container-fluid top-bar px-4 d-none d-lg-block" style="background: var(--navy);">
     <div class="row gx-0">
       <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
         <div class="d-inline-flex align-items-center" style="height: 40px;">
           <small class="me-3 text-light"><i class="fas fa-map-marked-alt me-2"></i>Arusha, Sanawari, Tanzania</small>
           <small class="me-3 text-light">
             <a href="https://wa.me/255742276915" class="text-light text-decoration-none">
-              <i class="fab fa-whatsapp me-2" style="color: var(--secondary);"></i>+255742276915
+              <i class="fab fa-whatsapp me-2" style="color: var(--teal);"></i>+255742276915
             </a>
           </small>
           <small class="text-light"><i class="fas fa-envelope-open-text me-2"></i>info@emadventuretanzania.com</small>
@@ -1094,7 +1101,7 @@
           {% endfor %}
         </a>
         <button class="navbar-toggler d-lg-none me-2" type="button" onclick="toggleSidebar()">
-          <i class="fas fa-bars" style="color: var(--accent);"></i>
+          <i class="fas fa-bars" style="color: var(--golden-sand);"></i>
         </button>
         <div class="navbar-collapse collapse d-none d-lg-flex justify-content-center flex-grow-1" id="navbarNav">
           <ul class="navbar-nav mx-auto">
@@ -1243,7 +1250,7 @@
               <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Arusha, Sanawari, Tanzania</p>
               <p class="mb-2">
                 <a href="https://wa.me/255742276915" class="text-light text-decoration-none">
-                  <i class="fab fa-whatsapp me-2" style="color: var(--secondary);"></i>+255742276915
+                  <i class="fab fa-whatsapp me-2" style="color: var(--teal);"></i>+255742276915
                 </a>
               </p>
               <p class="mb-2"><i class="fas fa-envelope-open-text me-2"></i>info@emadventuretanzania.com</p>
@@ -1283,11 +1290,6 @@
             </div>
             <div class="col-md-6 text-center text-md-end">
               <div class="footer-menu">
-
-                <!-- Anatakiwa kulipia ili kuipata hii -->
-                 {% comment %}
-                <a href="{% url 'dashboard' %}"><i class="fas fa-chart-line"></i>Statistics</a>
-                  {% endcomment %}
                 <a href=""><i class="fas fa-cookie-bite"></i>Cookies</a>
                 <a href=""><i class="fas fa-life-ring"></i>Help</a>
                 <a href="{% url 'questions' %}"><i class="fas fa-question-circle"></i>FQAs</a>
