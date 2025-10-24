@@ -2,134 +2,245 @@
 {% load static %}
 
 {% block content %}
+<style>
+  /* General Reset and Styling */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f6f2;
+    color: #333;
+  }
 
-  <style>
-    :root{
-      --green:#0c8a3e;
-      --olive:#ffa600;
-      --olive-dark:#645824;
-      --muted:#6c757d;
-      --card-radius:14px;
+  /* Header with Sliding Background */
+  .hero {
+    position: relative;
+    height: 60vh; /* Reduced size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background: url('https://fun-zanzibar.com/wp-content/uploads/2024/05/Fun-Beach-Hotel-Zanzibar-Beach-Area-3.webp') no-repeat center center/cover;
+    animation: slide 15s infinite;
+  }
+
+  /* Sliding Background Animation */
+  @keyframes slide {
+    0% { background-image: url('https://fun-zanzibar.com/wp-content/uploads/2024/05/Fun-Beach-Hotel-Zanzibar-Beach-Area-3.webp'); }
+    33.33% { background-image: url('https://edentours.travel/wp-content/uploads/2019/01/Royal-Zanzibar-Beach-Resort-6-1160x696.jpg'); }
+    66.66% { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE7qCzxdBsP-l_aOUeYNCvgEBp5SmHOQYVFQ&s'); }
+    100% { background-image: url('https://images.trvl-media.com/lodging/6000000/5390000/5388900/5388856/5bda86a6.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill'); }
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 33, 61, 0.5); /* Navy overlay for readability */
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h2 {
+    font-family: 'Lora', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    margin-bottom: 0.5rem;
+  }
+
+  .breadcrumb {
+    background: transparent;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .breadcrumb-item a {
+    color: #f4c095;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .breadcrumb-item.active {
+    color: #ff6f61;
+  }
+
+  /* Intro Section */
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    color: #1f7a8c;
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #ff6f61, #f4c095);
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .copy p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    text-align: justify;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Tour Cards */
+  .tour-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f4c095;
+  }
+
+  .tour-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  .tour-card .thumb {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #ff6f61;
+  }
+
+  .tour-card .title {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #14213d;
+    margin: 0.8rem 0;
+  }
+
+  .price-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: linear-gradient(to right, #1f7a8c, #ff6f61);
+    color: white;
+  }
+
+  .price .amount {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .price .per {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+
+  .btn-olive {
+    background-color: #14213d;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-olive:hover {
+    background-color: #ff6f61;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    background: linear-gradient(to right, #1f7a8c, #f4c095);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+    border-radius: 12px;
+  }
+
+  .cta-banner h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-banner a {
+    background: #14213d;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .cta-banner a:hover {
+    background: #ff6f61;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      height: 50vh;
     }
 
-    body{line-height:1.7;color:#111;background:#fff}
-    .hero{
-      position:relative;
-      min-height:240px;
-      display:flex;
-      align-items:center;
-      background:url("https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1800&auto=format&fit=crop") center/cover no-repeat;
-      border-bottom:1px solid #eaeaea;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.25), rgba(0,0,0,.15));
-    }
-    .hero-content{
-      position:relative;z-index:1;
-      width:100%;
-      padding:50px 0;
-      color:#fff;text-align:center;
-    }
-    .hero h2{font-weight:700;letter-spacing:.3px;margin-bottom:.35rem}
-    .breadcrumb{
-      --bs-breadcrumb-divider: "–";
-      justify-content:center;
-      margin-bottom:0;
-    }
-    .breadcrumb .breadcrumb-item,
-    .breadcrumb a{color:#f1f1f1;text-decoration:none}
-    .breadcrumb .active{opacity:.85}
-
-    .section-title{
-      color:var(--green);
-      font-weight:700;
-      text-align:center;
-      margin:32px 0 12px;
-    }
-    .copy p{
-      margin:0 auto 10px;
-      max-width:950px;
-      text-align:justify;
-      color:#222;
+    .hero h2 {
+      font-size: 2rem;
     }
 
-    /* Cards */
-    .tour-card{
-      border:1px solid #e7e7e7;
-      border-radius:var(--card-radius);
-      overflow:hidden;
-      background:#fff;
-      box-shadow:0 4px 10px rgba(0,0,0,.05);
-      transition:transform .2s ease, box-shadow .2s ease;
+    .section-title {
+      font-size: 1.8rem;
     }
-    .tour-card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 8px 18px rgba(0,0,0,.09);
-    }
-    .tour-card .thumb{
-      height:160px;
-      object-fit:cover;
-      width:100%;
-      display:block;
-    }
-    .tour-card .title{
-      font-weight:700;
-      font-size:1.05rem;
-      margin:12px 0 0;
-    }
-    .tour-card .price-bar{
-      display:flex;align-items:center;gap:.75rem;
-      justify-content:space-between;
-      background:#efe9d0;
-      border-top:1px solid #e0d7b5;
-      padding:14px 16px;
-    }
-    .price{
-      line-height:1.1;
-      white-space:nowrap;
-    }
-    .price .amount{
-      font-weight:800;
-      font-size:1.15rem;
-    }
-    .price .per{
-      display:block;
-      font-size:.8rem;
-      color:var(--muted);
-      margin-top:.15rem;
-    }
-    .btn-olive{
-      background:var(--olive);
-      color:#fff;
-      font-weight:700;
-      border:none;
-      border-radius:8px;
-      padding:8px 14px;
-      text-transform:uppercase;
-      font-size:.8rem;
-      letter-spacing:.5px;
-    }
-    .btn-olive:hover{background:var(--olive-dark);color:#fff}
 
-    @media (min-width:768px){
-      .tour-card .thumb{height:180px}
+    .tour-card .thumb {
+      height: 140px;
     }
-    @media (min-width:992px){
-      .tour-card .thumb{height:190px}
+
+    .cta-banner h3 {
+      font-size: 1.5rem;
     }
-  </style>
-</head>
+  }
+
+  @media (max-width: 576px) {
+    .hero h2 {
+      font-size: 1.8rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+    }
+
+    .tour-card .thumb {
+      height: 120px;
+    }
+  }
+</style>
+
 <body>
-
-  <!-- Hero -->
+  <!-- Header with Sliding Background -->
   <header class="hero">
     <div class="container hero-content">
-      <h2 class="mb-1">Explore Zanzibar</h2>
+      <h2 style="color: white;">Discover Zanzibar’s Wonders</h2>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -139,34 +250,26 @@
     </div>
   </header>
 
-  <!-- Intro -->
+  <!-- Intro Section -->
   <main class="container my-4">
-    <!-- <h3 class="section-title">Explore Zanzibar – The Jewel of the Indian Ocean</h3> -->
-     <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif; color: #b21f1f;">
-        <b>Explore Zanzibar – The Jewel of the Indian Ocean</b>
-    </h1>
+    <h1 class="section-title">Zanzibar – Paradise Awaits</h1>
     <div class="copy">
       <p>
-        Explore Zanzibar, an exotic island paradise off the coast of Tanzania, where stunning beaches, rich history, and vibrant culture come together
-        to create an unforgettable escape. Stroll through the narrow streets of Stone Town, a UNESCO World Heritage site, and discover ancient
-        architecture, bustling markets, and the island’s unique blend of African, Arab, and European influences. Relax on powdery white-sand beaches,
-        soak up the warm Indian Ocean sun, and dive into crystal-clear waters teeming with marine life. From snorkeling and spice tours to romantic
-        sunsets and dhow cruises, Zanzibar offers a perfect balance of adventure and serenity.
+        Discover Zanzibar, a tropical gem off Tanzania’s coast, where pristine beaches, rich history, and vibrant culture create an unforgettable adventure. Explore Stone Town’s UNESCO-listed alleys, filled with ancient architecture and bustling markets, reflecting a blend of African, Arab, and European heritage.
       </p>
       <p>
-        Whether you’re seeking luxury retreats, cultural adventures, or laid-back island life, Zanzibar has it all. With its year-round tropical climate,
-        friendly locals, and rich history, Zanzibar is a dream destination for honeymooners, families, and adventure lovers alike. Whether you’re looking
-        to explore or simply relax, Zanzibar promises an unforgettable escape.
+        Dive into crystal waters, embark on spice tours, or sail on a traditional dhow at sunset. Zanzibar offers the perfect mix of relaxation and exploration for honeymooners, families, and adventurers. Let the island’s charm captivate you!
       </p>
     </div>
 
+   
+
     <!-- Cards Grid -->
     <div class="row g-3 g-md-4 mt-2">
-               {% for tour in tour_list %}
-      <!-- Card 1 -->
-      <div class="col-12 col-md-6 col-lg-4">
+      {% for tour in tour_list %}
+      <div class="col-12 col-sm-6 col-lg-4">
         <article class="tour-card h-100">
-          <img class="thumb" src="{{ tour.image }}" alt="1-Day Zanzibar Tour">
+          <img class="thumb" src="{{ tour.image }}" alt="{{ tour.Tour_title }} Tour" loading="lazy">
           <div class="px-3 pb-2">
             <h5 class="title">{{ tour.Tour_title }}</h5>
           </div>
@@ -175,18 +278,19 @@
               <span class="amount">$ {{ tour.Tour_price }}</span>
               <span class="per">per person</span>
             </div>
-            <a href="{% url 'Zanzibar_Tour' tour.pk %}" class="btn btn-olive"onclick="showLoading(event)">View Tour</a>
-
+            <a href="{% url 'Zanzibar_Tour' tour.pk %}" class="btn btn-olive" onclick="showLoading(event)">View Tour</a>
           </div>
         </article>
       </div>
-
+      {% empty %}
+      <div class="col-12 text-center">
+        <p>No tours available at the moment.</p>
+      </div>
       {% endfor %}
-
     </div>
   </main>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 {% endblock %}
