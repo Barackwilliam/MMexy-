@@ -231,8 +231,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 UPLOADCARE = {
-    'pub_key': '76122001cca4add87f02',
-    'secret': 'f00801b9b65172d50de5',
+    'pub_key': '4d19d5cf5a9a3963be91',
+    'secret': '08e15fa02d65606a2eab',
 }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
