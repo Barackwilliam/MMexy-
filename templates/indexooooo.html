@@ -1,0 +1,1824 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+  /* Enhanced Modern Luxe Safari Design - Vibrant African Elegance */
+  :root {
+    --safari-amber: #F4A261;
+    --deep-veld: linear-gradient(135deg, #0A1A2F 0%, #1E3A5F 50%, #2A4D7A 100%);
+    --sunset-blaze: linear-gradient(135deg, #E76F51 0%, #F4A261 50%, #F9C74F 100%);
+    --night-savanna: linear-gradient(135deg, #08090A 0%, #15171A 50%, #25272B 100%);
+    --golden-glow: rgba(244, 162, 97, 0.6);
+    --shadow-luxe: 0 15px 50px rgba(0, 0, 0, 0.35);
+    --border-gleam: 1px solid rgba(244, 162, 97, 0.3);
+    --text-luminous: #F9FAFB;
+    --transition-ease: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; 
+    line-height: 1.6; 
+    color: var(--text-luminous); 
+    overflow-x: hidden;
+    background: var(--deep-veld);
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced Hero: Cinematic Full-Screen Experience */
+  .hero-vista { 
+    position: relative; 
+    height: 100vh; 
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.7);
+  }
+  .hero-vista .carousel { 
+    height: 100vh; 
+  }
+  .hero-vista .carousel-inner img, .hero-vista video { 
+    width: 100%; 
+    height: 100vh; 
+    object-fit: cover; 
+    transition: transform 1.2s var(--transition-ease); 
+    filter: brightness(0.9);
+  }
+  .hero-vista .carousel-item:hover img { 
+    transform: scale(1.15) rotate(0.5deg); 
+  }
+  .hero-veil { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: radial-gradient(circle at center, rgba(10, 26, 47, 0.3) 0%, rgba(30, 58, 95, 0.7) 70%, rgba(42, 77, 122, 0.9) 100%); 
+    z-index: 1; 
+  }
+  .hero-nexus { 
+    position: relative; 
+    z-index: 2; 
+    text-align: center; 
+    padding: 0 1rem; 
+    animation: heroFade 1.8s ease-out; 
+  }
+  @keyframes heroFade { 
+    from { opacity: 0; transform: translateY(40px); } 
+    to { opacity: 1; transform: translateY(0); } 
+  }
+  .hero-crest { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3.5rem, 8vw, 6rem); 
+    font-weight: 900; 
+    background: var(--sunset-blaze); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    margin-bottom: 1.5rem; 
+    letter-spacing: 0.1em; 
+    text-shadow: 0 0 25px var(--golden-glow); 
+    animation: pulseGlow 3s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { text-shadow: 0 0 25px var(--golden-glow); }
+    50% { text-shadow: 0 0 35px var(--golden-glow); }
+  }
+  .hero-whisper { 
+    font-size: clamp(1.3rem, 3vw, 2rem); 
+    opacity: 0.95; 
+    margin-bottom: 3rem; 
+    font-weight: 300; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+  }
+  .quest-oracle { 
+    max-width: 800px; 
+    margin: 0 auto 3rem; 
+    position: relative; 
+    animation: oracleSlide 1.8s ease-out 0.3s both; 
+  }
+  @keyframes oracleSlide { 
+    from { opacity: 0; transform: translateY(30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+  }
+  .quest-oracle .form-control { 
+    border: none; 
+    border-radius: 50px; 
+    padding: 1.3rem 2.5rem; 
+    font-size: 1.15rem; 
+    background: rgba(249, 250, 251, 0.98); 
+    box-shadow: var(--shadow-luxe); 
+    transition: all 0.4s var(--transition-ease); 
+  }
+  .quest-oracle .form-control:focus { 
+    box-shadow: 0 0 0 0.3rem var(--golden-glow), var(--shadow-luxe); 
+    transform: scale(1.02); 
+  }
+  .oracle-summon { 
+    position: absolute; 
+    right: 0.7rem; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: var(--sunset-blaze); 
+    border: none; 
+    border-radius: 50px; 
+    padding: 1.1rem 2.5rem; 
+    color: var(--text-luminous); 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: all 0.5s var(--transition-ease); 
+    box-shadow: 0 6px 20px rgba(231, 111, 81, 0.6); 
+  }
+  .oracle-summon:hover { 
+    transform: translateY(-50%) scale(1.08); 
+    box-shadow: 0 10px 30px rgba(231, 111, 81, 0.8); 
+    filter: brightness(1.1);
+  }
+
+  /* Modal: Ethereal Gateway */
+  .modal-ethereal .modal-content { 
+    border: none; 
+    border-radius: 25px; 
+    box-shadow: var(--shadow-luxe); 
+    background: linear-gradient(135deg, rgba(249, 250, 251, 0.97) 0%, rgba(255, 255, 255, 1) 100%); 
+    animation: modalPop 0.5s ease-out; 
+  }
+  @keyframes modalPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .modal-ethereal .modal-header { 
+    background: var(--deep-veld); 
+    color: var(--text-luminous); 
+    border-radius: 25px 25px 0 0; 
+    border-bottom: var(--border-gleam); 
+  }
+  .modal-ethereal .modal-title { 
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700; 
+    font-size: 1.8rem; 
+  }
+  .modal-ethereal .modal-body { 
+    padding: 3rem; 
+  }
+  .modal-ethereal .btn-gradient { 
+    background: var(--sunset-blaze); 
+    border-radius: 50px; 
+    font-weight: 700; 
+    padding: 1.2rem 3rem; 
+    transition: all 0.4s var(--transition-ease); 
+    box-shadow: 0 5px 20px rgba(231, 111, 81, 0.5); 
+  }
+  .modal-ethereal .btn-gradient:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 25px rgba(231, 111, 81, 0.7); 
+    filter: brightness(1.1);
+  }
+
+  /* Headline: Grand Declaration */
+  .proclamation-spire { 
+    background: linear-gradient(135deg, rgba(249, 250, 251, 0.97) 0%, #FFF 100%); 
+    padding: 5rem 0; 
+    box-shadow: var(--shadow-luxe); 
+    margin: 3rem 0; 
+  }
+  .proclamation-spire .container { text-align: center; }
+  .proclamation-spire h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3rem, 6vw, 4.5rem); 
+    background: var(--sunset-blaze); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: 0.1em; 
+    margin-bottom: 1.5rem; 
+    position: relative; 
+    text-shadow: 0 0 20px var(--golden-glow); 
+    animation: pulseGlow 3s infinite ease-in-out;
+  }
+  .proclamation-spire h1::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: -1rem; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 100px; 
+    height: 5px; 
+    background: var(--sunset-blaze); 
+    border-radius: 3px; 
+    box-shadow: 0 3px 10px var(--golden-glow); 
+  }
+  .proclamation-spire .half-height { 
+    padding: 2.5rem; 
+    background: rgba(255, 255, 255, 0.95); 
+    border-radius: 20px; 
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15); 
+  }
+  .stylish-heading { 
+    letter-spacing: 0.08em; 
+    padding-bottom: 1.2rem; 
+    position: relative; 
+  }
+  .stylish-heading::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 80px; 
+    height: 4px; 
+    background: var(--sunset-blaze); 
+    border-radius: 3px; 
+  }
+
+  /* About: Epic Tale */
+  .about-full-section { 
+    min-height: 85vh; 
+    padding: 6rem 1rem; 
+    background: linear-gradient(135deg, #F9FAFB 0%, #E9ECEF 100%); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    font-family: 'Playfair Display', serif; 
+    position: relative; 
+    overflow: hidden; 
+  }
+  .section-label { 
+    font-size: 1rem; 
+    letter-spacing: 3px; 
+    font-weight: 700; 
+    color: var(--safari-amber); 
+    text-transform: uppercase; 
+  }
+  .decor-line { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+  }
+  .decor-line .line { 
+    display: block; 
+    height: 3px; 
+    background: var(--safari-amber); 
+    border-radius: 50px; 
+    transition: width 0.3s ease; 
+  }
+  .decor-line .line.short { width: 30px; }
+  .decor-line .line.long { width: 60px; }
+  .about-title { 
+    font-size: clamp(2.5rem, 5vw, 3.5rem); 
+    font-weight: 800; 
+    color: #2D2D2D; 
+    margin-bottom: 1.5rem; 
+    animation: fadeInUp 1s ease-out; 
+  }
+  .about-text { 
+    max-width: 900px; 
+    color: #444; 
+    line-height: 2; 
+    font-size: clamp(1rem, 2vw, 1.2rem); 
+    animation: fadeInUp 1.2s ease-out 0.2s both; 
+  }
+  .btn-about { 
+    background: var(--sunset-blaze); 
+    color: #000; 
+    font-weight: 700; 
+    border: none; 
+    border-radius: 50px; 
+    padding: 1rem 2.5rem; 
+    transition: all 0.4s var(--transition-ease); 
+    box-shadow: 0 5px 15px rgba(231, 111, 81, 0.5); 
+  }
+  .btn-about:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 25px rgba(231, 111, 81, 0.7); 
+    color: #000; 
+    filter: brightness(1.1);
+  }
+
+  /* Services: Opulent Showcase */
+  .opulent-gallery { 
+    background: var(--night-savanna); 
+    padding: 8rem 0; 
+  }
+  .opulent-gallery .section-title { 
+    background: var(--safari-amber); 
+    color: #000; 
+    padding: 1rem 2.5rem; 
+    border-radius: 50px; 
+    font-weight: 700; 
+    letter-spacing: 0.12em; 
+    display: inline-block; 
+    margin-bottom: 1rem; 
+  }
+  .opulent-gallery h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3rem, 5.5vw, 4rem); 
+    color: var(--text-luminous); 
+    margin-bottom: 1.5rem; 
+  }
+  .opulent-gallery .service-card { 
+    border-radius: 25px; 
+    overflow: hidden; 
+    box-shadow: var(--shadow-luxe); 
+    transition: all 0.6s var(--transition-ease); 
+    border: var(--border-gleam); 
+    position: relative; 
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(10px); 
+  }
+  .opulent-gallery .service-card:hover { 
+    transform: translateY(-12px) rotateX(4deg); 
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5); 
+  }
+  .opulent-gallery .luxury-img-container { 
+    height: 280px; 
+    overflow: hidden; 
+    position: relative; 
+  }
+  .opulent-gallery .luxury-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 1s var(--transition-ease); 
+  }
+  .opulent-gallery .service-card:hover .luxury-img { 
+    transform: scale(1.2) rotate(3deg); 
+  }
+  .opulent-gallery .card-body { 
+    background: var(--night-savanna); 
+    color: var(--text-luminous); 
+    padding: 2.5rem; 
+    border-top: var(--border-gleam); 
+  }
+  .opulent-gallery .service-title { 
+    color: var(--safari-amber); 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.8rem; 
+    margin-bottom: 1rem; 
+  }
+  .opulent-gallery .btn-gold { 
+    background: var(--sunset-blaze); 
+    border-radius: 50px; 
+    font-weight: 700; 
+    padding: 0.8rem 2rem; 
+    transition: all 0.4s var(--transition-ease); 
+  }
+  .opulent-gallery .btn-gold:hover { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 30px var(--golden-glow); 
+    filter: brightness(1.1); 
+  }
+  .opulent-gallery .view-more { 
+    background: var(--night-savanna); 
+    color: var(--safari-amber); 
+    border: var(--border-gleam); 
+    font-weight: 700; 
+    padding: 1rem 3rem; 
+    border-radius: 50px; 
+    transition: all 0.4s var(--transition-ease); 
+  }
+  .opulent-gallery .view-more:hover { 
+    background: var(--safari-amber); 
+    color: #000; 
+    transform: scale(1.05); 
+    box-shadow: 0 5px 15px rgba(231, 111, 81, 0.5); 
+  }
+
+  /* Why Travel: Sacred Pillars */
+  .sacred-pillars { 
+    background: var(--deep-veld); 
+    padding: 8rem 0; 
+  }
+  .sacred-pillars h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3rem, 5.5vw, 4rem); 
+    color: var(--text-luminous); 
+    margin-bottom: 1.5rem; 
+    text-align: center; 
+  }
+  .sacred-pillars p { 
+    font-size: 1.3rem; 
+    color: rgba(249, 250, 251, 0.9); 
+    margin-bottom: 3rem; 
+    text-align: center; 
+  }
+  .sacred-pillars .pillar { 
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(15px); 
+    border-radius: 25px; 
+    padding: 3.5rem 2rem; 
+    text-align: center; 
+    box-shadow: var(--shadow-luxe); 
+    border: var(--border-gleam); 
+    transition: all 0.5s var(--transition-ease); 
+    position: relative; 
+    overflow: hidden; 
+  }
+  .sacred-pillars .pillar:hover { 
+    transform: translateY(-10px) rotateZ(2deg); 
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); 
+  }
+  .sacred-pillars .pillar i { 
+    font-size: 4rem; 
+    color: var(--safari-amber); 
+    margin-bottom: 1.5rem; 
+    transition: transform 0.4s var(--transition-ease); 
+  }
+  .sacred-pillars .pillar:hover i { 
+    transform: scale(1.2) rotate(10deg); 
+  }
+  .sacred-pillars .pillar h5 { 
+    color: var(--text-luminous); 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.8rem; 
+    margin-bottom: 1rem; 
+  }
+  .sacred-pillars .pillar p { 
+    color: rgba(249, 250, 251, 0.95); 
+    font-size: 1.1rem; 
+  }
+
+  /* Kilimanjaro Section: Majestic Ascent */
+  .kilimanjaro-section { 
+    background: linear-gradient(135deg, #1A2A6C 0%, #B21F1F 50%, #F4A261 100%); 
+    color: #F9FAFB; 
+    position: relative; 
+    overflow: hidden; 
+    padding: 8rem 0; 
+  }
+  .bg-icons i { 
+    position: absolute; 
+    font-size: 5rem; 
+    opacity: 0.08; 
+    color: var(--safari-amber); 
+    animation: floatIcon 10s infinite ease-in-out; 
+  }
+  .icon-1 { top: 10%; left: 5%; }
+  .icon-2 { top: 50%; right: 10%; font-size: 6rem; }
+  .icon-3 { bottom: 15%; left: 15%; }
+  .icon-4 { top: 20%; right: 15%; font-size: 4.5rem; }
+  @keyframes floatIcon { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-20px); } 
+  }
+  .kilimanjaro-section h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3rem, 5.5vw, 4rem); 
+    color: #FFF; 
+    margin-bottom: 1.5rem; 
+    text-align: center; 
+  }
+  .kilimanjaro-section .carousel-image-wrapper { 
+    position: relative; 
+    height: 500px; 
+    border-radius: 20px; 
+    overflow: hidden; 
+  }
+  .kilimanjaro-section .carousel-image-wrapper img { 
+    object-fit: cover; 
+    height: 100%; 
+    width: 100%; 
+    transition: transform 1s var(--transition-ease); 
+  }
+  .kilimanjaro-section .carousel-image-wrapper:hover img { 
+    transform: scale(1.15); 
+  }
+  .kilimanjaro-section .carousel-overlay { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%); 
+  }
+  .kilimanjaro-section .carousel-caption-top { 
+    position: absolute; 
+    top: 40px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    text-align: center; 
+    animation: fadeDown 1.5s ease forwards; 
+  }
+  .kilimanjaro-section .carousel-caption-top h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(1.8rem, 3vw, 2rem); 
+    background: var(--sunset-blaze); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    font-weight: 700; 
+    text-shadow: 0 0 15px rgba(0,0,0,0.4); 
+  }
+  @keyframes fadeDown { 
+    from { opacity: 0; transform: translate(-50%, -20px); } 
+    to { opacity: 1; transform: translate(-50%, 0); } 
+  }
+
+  /* Time & Packing: Timeless Chronicles */
+  .timeless-scrolls, .packing-scrolls { 
+    padding: 8rem 0; 
+    background: var(--deep-veld); 
+  }
+  .timeless-scrolls h2, .packing-scrolls h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(2.5rem, 4.5vw, 3rem); 
+    color: var(--safari-amber); 
+    text-align: center; 
+    margin-bottom: 2rem; 
+  }
+  .timeless-scrolls p, .packing-scrolls p { 
+    font-size: 1.2rem; 
+    text-align: center; 
+    max-width: 800px; 
+    margin: 0 auto 3rem; 
+    color: var(--text-luminous); 
+  }
+  .scroll-container { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 3rem; 
+    align-items: stretch; 
+  }
+  .scroll-vault { 
+    background: rgba(255, 255, 255, 0.08); 
+    backdrop-filter: blur(15px); 
+    border-radius: 20px; 
+    padding: 3rem; 
+    box-shadow: var(--shadow-luxe); 
+    border: var(--border-gleam); 
+    transition: all 0.4s var(--transition-ease); 
+  }
+  .scroll-vault:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); 
+  }
+  .scroll-vault h2 { 
+    color: var(--safari-amber); 
+    margin-bottom: 1.5rem; 
+    font-size: 2rem; 
+  }
+  .scroll-vault p { 
+    color: var(--text-luminous); 
+    font-size: 1.2rem; 
+    margin-bottom: 2rem; 
+  }
+  .recommended-scroll ul { 
+    list-style: none; 
+    padding: 0; 
+  }
+  .recommended-scroll li { 
+    padding: 1.2rem; 
+    background: rgba(0, 255, 0, 0.15); 
+    margin-bottom: 1rem; 
+    border-radius: 15px; 
+    border-left: 5px solid #00cc00; 
+    transition: transform 0.4s var(--transition-ease); 
+  }
+  .recommended-scroll li:hover { 
+    transform: translateX(10px); 
+    background: rgba(0, 255, 0, 0.2); 
+  }
+  .avoid-scroll { 
+    background: rgba(255, 0, 0, 0.15); 
+    border-radius: 15px; 
+    padding: 2rem; 
+    border-left: 5px solid #ff0000; 
+  }
+  .avoid-scroll h6 { 
+    color: #ff0000; 
+    font-weight: 700; 
+  }
+  .avoid-scroll p { 
+    color: var(--text-luminous); 
+  }
+  .packing-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2.5rem; 
+  }
+  .packing-vault { 
+    background: rgba(255, 255, 255, 0.98); 
+    border-radius: 20px; 
+    padding: 2.5rem; 
+    box-shadow: var(--shadow-luxe); 
+    border: var(--border-gleam); 
+    transition: transform 0.4s var(--transition-ease); 
+    text-align: center; 
+  }
+  .packing-vault:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
+  }
+  .packing-vault h5 { 
+    color: #2D2D2D; 
+    font-weight: 700; 
+    margin-bottom: 1.5rem; 
+  }
+  .packing-vault ul { 
+    list-style: none; 
+    padding: 0; 
+    text-align: left; 
+  }
+  .packing-vault li { 
+    padding: 0.8rem 0; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+    color: #555; 
+  }
+  .packing-icon { 
+    font-size: 3rem; 
+    margin-bottom: 1rem; 
+    color: var(--safari-amber); 
+  }
+
+  /* Destinations: Celestial Ventures */
+  .exclusive-destinations { 
+    background: linear-gradient(135deg, #FFF 0%, #F8F5F0 35%, #F1E6D1 100%); 
+    padding: 8rem 0; 
+    position: relative; 
+    overflow: hidden; 
+  }
+  .exclusive-destinations::before { 
+    content: ""; 
+    position: absolute; 
+    top: -50px; 
+    left: -50px; 
+    width: 200px; 
+    height: 200px; 
+    background: radial-gradient(circle, var(--safari-amber) 0%, transparent 70%); 
+    opacity: 0.3; 
+    filter: blur(40px); 
+  }
+  .exclusive-destinations::after { 
+    content: ""; 
+    position: absolute; 
+    bottom: -50px; 
+    right: -50px; 
+    width: 250px; 
+    height: 250px; 
+    background: radial-gradient(circle, #F9C74F 0%, transparent 70%); 
+    opacity: 0.3; 
+    filter: blur(40px); 
+  }
+  .section-header .luxury-label { 
+    background: rgba(255, 255, 255, 0.7); 
+    border: 1px solid #E5D5A3; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    color: var(--safari-amber); 
+    backdrop-filter: blur(10px); 
+    padding: 0.8rem 2rem; 
+  }
+  .section-header .title { 
+    font-family: 'Playfair Display', serif; 
+    color: #2D2D2D; 
+    font-size: clamp(3rem, 5.5vw, 4rem); 
+  }
+  .section-header .highlight { 
+    background: var(--sunset-blaze); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+  }
+  .luxury-divider { 
+    width: 150px; 
+    height: 4px; 
+    background: linear-gradient(90deg, transparent 0%, var(--safari-amber) 50%, transparent 100%); 
+    border-radius: 50px; 
+    margin: 1rem auto; 
+  }
+  .destination-card { 
+    background: #FFF; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
+    transition: all 0.5s var(--transition-ease); 
+    position: relative; 
+  }
+  .destination-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); 
+  }
+  .card-image { 
+    position: relative; 
+    height: 220px; 
+    overflow: hidden; 
+  }
+  .card-image img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.6s var(--transition-ease); 
+  }
+  .destination-card:hover .card-image img { 
+    transform: scale(1.15); 
+  }
+  .badge { 
+    position: absolute; 
+    top: 15px; 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    border-radius: 30px; 
+    backdrop-filter: blur(8px); 
+  }
+  .badge.offer { 
+    left: 15px; 
+    background: rgba(0,0,0,0.7); 
+    color: var(--safari-amber); 
+    padding: 5px 12px; 
+  }
+  .badge.exclusive { 
+    right: 15px; 
+    background: rgba(244, 162, 97, 0.25); 
+    color: #2D2D2D; 
+    padding: 5px 12px; 
+  }
+  .card-content { 
+    padding: 1.5rem; 
+    text-align: left; 
+  }
+  .card-content h5 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    margin-bottom: 0.5rem; 
+  }
+  .card-content p { 
+    color: #666; 
+    font-size: 1rem; 
+    margin-bottom: 1rem; 
+  }
+  .btn-luxury { 
+    background: var(--sunset-blaze); 
+    color: #000; 
+    font-weight: 700; 
+    border: none; 
+    border-radius: 30px; 
+    padding: 0.8rem 2rem; 
+    transition: all 0.4s var(--transition-ease); 
+  }
+  .btn-luxury:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(231, 111, 81, 0.5); 
+    color: #000; 
+    filter: brightness(1.1); 
+  }
+  .explore-link { 
+    display: inline-block; 
+    font-weight: 700; 
+    color: var(--safari-amber); 
+    text-decoration: none; 
+    transition: color 0.4s ease; 
+  }
+  .explore-link:hover { 
+    color: #D97706; 
+  }
+
+  /* Packages: Treasure Vault */
+  .treasure-trove { 
+    background: var(--deep-veld); 
+    padding: 8rem 0; 
+  }
+  .treasure-trove .section-title { 
+    background: var(--sunset-blaze); 
+    color: #FFF; 
+    padding: 1rem 2.5rem; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    display: inline-block; 
+  }
+  .treasure-trove h1 { 
+    color: var(--text-luminous); 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3rem, 5.5vw, 4rem); 
+  }
+  .treasure-trove .package-card { 
+    background: rgba(255, 255, 255, 0.08); 
+    backdrop-filter: blur(15px); 
+    border-radius: 25px; 
+    border: var(--border-gleam); 
+    transition: all 0.5s var(--transition-ease); 
+  }
+  .treasure-trove .package-card:hover { 
+    transform: translateY(-12px); 
+    box-shadow: var(--shadow-luxe); 
+  }
+  .treasure-trove .card-img { 
+    position: relative; 
+    height: 350px; 
+    overflow: hidden; 
+  }
+  .treasure-trove .card-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.6s var(--transition-ease); 
+  }
+  .treasure-trove .package-card:hover .card-img img { 
+    transform: scale(1.15); 
+  }
+  .treasure-trove .card-body { 
+    background: rgba(0, 0, 0, 0.8); 
+    padding: 2.5rem; 
+  }
+  .treasure-trove .text-warning { 
+    color: var(--safari-amber); 
+  }
+
+  /* Legendary Saga: Serengeti Migration */
+  .legendary-saga { 
+    padding: 8rem 0; 
+    background: linear-gradient(135deg, #1A2A6C 0%, #B21F1F 50%, #F4A261 100%); 
+  }
+  .legendary-saga .card { 
+    border-radius: 25px; 
+    overflow: hidden; 
+    box-shadow: var(--shadow-luxe); 
+    border: var(--border-gleam); 
+  }
+  .legendary-saga .carousel-inner img { 
+    height: 500px; 
+    object-fit: cover; 
+    transition: transform 1s var(--transition-ease); 
+  }
+  .legendary-saga .carousel-item:hover img { 
+    transform: scale(1.15); 
+  }
+  .legendary-saga .card-body { 
+    background: var(--night-savanna); 
+    color: var(--text-luminous); 
+    padding: 3rem; 
+  }
+  .legendary-saga h3 { 
+    color: #E53E3E; 
+    font-family: 'Playfair Display', serif; 
+    font-size: 2rem; 
+    margin-bottom: 1.5rem; 
+  }
+  .legendary-saga .btn { 
+    background: var(--sunset-blaze); 
+    border-radius: 50px; 
+    font-weight: 700; 
+    padding: 1rem 2.5rem; 
+    transition: all 0.4s var(--transition-ease); 
+  }
+  .legendary-saga .btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(231, 111, 81, 0.5); 
+    filter: brightness(1.1); 
+  }
+
+  /* Honeymoon Hero: Romantic Escapes */
+  .honeymoon-hero { 
+    background: linear-gradient(135deg, #2A3C24 0%, #5C3F1A 50%, #D4A017 100%); 
+    padding: 8rem 0; 
+    position: relative; 
+    overflow: hidden; 
+  }
+  .honeymoon-hero .section-title { 
+    background: var(--safari-amber); 
+    color: #000; 
+    padding: 1rem 2.5rem; 
+    border-radius: 30px; 
+    font-weight: 700; 
+  }
+  .honeymoon-hero h1 { 
+    color: #FFF; 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(3rem, 5.5vw, 4rem); 
+  }
+  .honeymoon-hero .safari-card { 
+    border-radius: 25px; 
+    overflow: hidden; 
+    box-shadow: var(--shadow-luxe); 
+    border: var(--border-gleam); 
+  }
+  .honeymoon-hero .safari-img-container { 
+    height: 500px; 
+    overflow: hidden; 
+  }
+  .honeymoon-hero .safari-img { 
+    object-fit: cover; 
+    height: 100%; 
+    width: 100%; 
+    transition: transform 0.6s var(--transition-ease); 
+  }
+  .honeymoon-hero .safari-card:hover .safari-img { 
+    transform: scale(1.15); 
+  }
+  .honeymoon-hero .safari-caption h3 { 
+    color: #F4A261; 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.8rem; 
+  }
+  .honeymoon-hero .btn-safari-gold { 
+    background: var(--sunset-blaze); 
+    border-radius: 50px; 
+    font-weight: 700; 
+    padding: 1rem 3rem; 
+    transition: all 0.4s var(--transition-ease); 
+  }
+  .honeymoon-hero .btn-safari-gold:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(231, 111, 81, 0.5); 
+    filter: brightness(1.1); 
+  }
+
+  /* Enhanced Mobile Responsiveness */
+  @media (max-width: 992px) { 
+    .hero-crest { font-size: clamp(2.5rem, 6vw, 3.5rem); } 
+    .hero-whisper { font-size: clamp(1rem, 2.5vw, 1.5rem); } 
+    .quest-oracle .form-control { padding: 1rem 2rem; font-size: 1rem; } 
+    .oracle-summon { padding: 0.8rem 2rem; font-size: 0.9rem; } 
+    .proclamation-spire { padding: 4rem 0; } 
+    .proclamation-spire h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); } 
+    .about-full-section { padding: 5rem 1rem; min-height: 70vh; } 
+    .about-title { font-size: clamp(2rem, 4vw, 2.8rem); } 
+    .about-text { font-size: clamp(0.9rem, 1.8vw, 1.1rem); } 
+    .opulent-gallery, .sacred-pillars, .kilimanjaro-section, .timeless-scrolls, .packing-scrolls, .exclusive-destinations, .treasure-trove, .legendary-saga, .honeymoon-hero { padding: 5rem 0; } 
+    .opulent-gallery .luxury-img-container { height: 200px; } 
+    .kilimanjaro-section .carousel-image-wrapper { height: 350px; } 
+    .kilimanjaro-section .carousel-caption-top h3 { font-size: clamp(1.4rem, 2.5vw, 1.6rem); } 
+    .scroll-container { grid-template-columns: 1fr; } 
+    .packing-grid { grid-template-columns: 1fr; } 
+    .destination-card .card-image { height: 180px; } 
+    .treasure-trove .card-img { height: 300px; } 
+    .legendary-saga .carousel-inner img { height: 400px; } 
+    .honeymoon-hero .safari-img-container { height: 400px; } 
+  }
+
+  @media (max-width: 576px) { 
+    .hero-crest { font-size: clamp(2rem, 5vw, 2.8rem); } 
+    .hero-whisper { font-size: clamp(0.9rem, 2vw, 1.2rem); } 
+    .quest-oracle { max-width: 90%; } 
+    .oracle-summon { right: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.85rem; } 
+    .proclamation-spire h1 { font-size: clamp(2rem, 4vw, 2.8rem); } 
+    .about-title { font-size: clamp(1.8rem, 3.5vw, 2.2rem); } 
+    .opulent-gallery .section-title { font-size: 0.9rem; padding: 0.8rem 2rem; } 
+    .opulent-gallery h1 { font-size: clamp(2rem, 4vw, 2.8rem); } 
+    .sacred-pillars h2 { font-size: clamp(2rem, 4vw, 2.8rem); } 
+    .kilimanjaro-section h1 { font-size: clamp(2rem, 4vw, 2.8rem); } 
+    .kilimanjaro-section .carousel-image-wrapper { height: 250px; } 
+    .treasure-trove h1 { font-size: clamp(2rem, 4vw, 2.8rem); } 
+    .legendary-saga h3 { font-size: 1.6rem; } 
+    .honeymoon-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); } 
+  }
+
+  /* Parallax Effect for Hero */
+  .hero-vista[data-parallax] {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+<div class="hero-vista" data-parallax>
+
+  {% for item in home_text %}
+  <div id="welcomeCarousel{{ forloop.counter }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+      {% if item.image_1 %}
+      <div class="carousel-item active">
+        <img src="{{ item.image_1 }}" alt="Background E.M Adventure Tanzania 1" class="d-block w-100">
+      </div>
+      {% endif %}
+      {% if item.image_2 %}
+      <div class="carousel-item">
+        <img src="{{ item.image_2 }}" alt="Background E.M Adventure Tanzania 2" class="d-block w-100">
+      </div>
+      {% endif %}
+      {% if item.image_3 %}
+      <div class="carousel-item">
+        <img src="{{ item.image_3 }}" alt="Background KILIHAPPY 3" class="d-block w-100">
+      </div>
+      {% endif %}
+      {% if item.image_4 %}
+      <div class="carousel-item">
+        <img src="{{ item.image_4 }}" alt="Background E.M Adventure Tanzania 4" class="d-block w-100">
+      </div>
+      {% endif %}
+      {% if item.image_5 %}
+      <div class="carousel-item">
+        <img src="{{ item.image_5 }}" alt="Background E.M Adventure Tanzania 5" class="d-block w-100">
+      </div>
+      {% endif %}
+      {% if item.image_6 %}
+      <div class="carousel-item">
+        <img src="{{ item.image_6 }}" alt="Background E.M Adventure Tanzania 6" class="d-block w-100">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% empty %}
+  <video autoplay muted loop playsinline class="position-absolute w-100 h-100">
+    <source src="{% static 'img/bg-video.mp4' %}" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  {% endfor %}
+
+  <div class="hero-veil"></div>
+  <div class="hero-nexus">
+    <div class="row w-100 justify-content-center text-center px-3">
+      <div class="col-lg-10 col-md-12">
+        {% for i in home_text %}
+        <h1 class="hero-crest">{{i.title}}</h1>
+        <h5 class="hero-whisper fs-5 mb-4">{{i.subtitle}}</h5>
+        {% empty %}
+        <h1 class="hero-crest">Welcome to E.M Adventure Tanzania</h1>
+        <p class="hero-whisper fs-5 mb-4">Let Us Guide You to the Prime Wonders of Tanzania</p>
+        {% endfor %}
+        <div class="quest-oracle">
+          <input class="form-control" type="text" placeholder="Search for your adventure...">
+          <button class="oracle-summon" data-bs-toggle="modal" data-bs-target="#tourPopup">Discover Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-ethereal" id="tourPopup" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color: yellow;" class="modal-title fw-bold">Welcome to E.M Adventure Tanzania 🌍</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center px-4 py-5">
+        <h4 class="fw-bold mb-3">Craft Your Dream Safari</h4>
+        <p class="text-muted mb-4">Ready to embark on an unforgettable journey? Explore our curated experiences and start planning your adventure today.</p>
+        <a href="{% url 'form' %}"><button class="btn btn-gradient px-5 py-3"><i class="fas fa-arrow-down me-2"></i> Start Planning</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if headline %}
+<div class="proclamation-spire">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="half-height">
+          {% for i in headline %}
+          <h1 class="stylish-heading">{{ i.name_of_headline }}</h1>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if abouts %}
+{% for i in abouts %}
+<section class="about-full-section d-flex align-items-center">
+  <div class="container text-center">
+    <div class="section-heading mb-4">
+      <div class="decor-line mb-2">
+        <span class="line short"></span>
+        <span class="line long"></span>
+      </div>
+      <h2 class="section-label text-uppercase">Our Legacy</h2>
+      <div class="decor-line mt-2">
+        <span class="line short"></span>
+        <span class="line long"></span>
+      </div>
+    </div>
+
+    <h1 class="about-title">{{ i.title }}</h1>
+    <p class="about-text mx-auto">{{ i.content|truncatechars:450 }}</p>
+    <a href="{% url 'about' %}" class="btn btn-about px-5 py-3 mt-3" onclick="showLoading(event)">
+      Discover More <i class="fas fa-arrow-right ms-2"></i>
+    </a>
+  </div>
+</section>
+{% endfor %}
+{% else %}
+<div class="alert alert-info text-center py-5">
+  <h4>Our story is being crafted and will be shared soon.</h4>
+</div>
+{% endif %}
+
+<div class="opulent-gallery py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h6 class="section-title mb-0 text-uppercase tracking-widest"><i class="fas fa-crown me-2"></i>Premium Experiences</h6>
+      <h1 class="display-5 fw-light mb-3">Discover Our <span class="fw-bold gold-gradient-text">Signature Services</span></h1>
+      <div class="mx-auto section-divider"></div>
+    </div>
+
+    <div class="row g-5">
+      {% for service in services %}
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="card service-card overflow-hidden position-relative border-0 shadow-lg">
+          <div class="luxury-img-container">
+            <img src="{{ service.image }}" alt="{{ service.title }}" class="luxury-img">
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body text-center py-4">
+            <h5 class="mb-2 service-title">{{ service.title }}</h5>
+            <p class="service-desc">{{ service.description|truncatechars:90 }}</p>
+            <a href="{% url 'service' %}" class="btn btn-gold btn-sm rounded-pill hover-grow" onclick="showLoading(event)">
+              <i class="fas fa-arrow-right me-1"></i> Explore Now
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-6 pt-4">
+      <a href="{% url 'service' %}" class="btn btn-dark btn-lg rounded-pill px-5 py-3 shadow hover-grow position-relative overflow-hidden gold-border" onclick="showLoading(event)">
+        <span class="position-relative z-2">View All Services <i class="fas fa-arrow-right ms-2"></i></span>
+      </a>
+    </div>
+  </div>
+</div>
+<style>
+.opulent-gallery { background: var(--night-savanna); }
+.gold-gradient-text { background: var(--sunset-blaze); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-divider { width: 130px; height: 4px; background: linear-gradient(90deg, rgba(244,162,97,0) 0%, var(--safari-amber) 50%, rgba(244,162,97,0) 100%); border-radius: 50px; }
+.service-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(8px); border-radius: 20px; transition: transform 0.5s var(--transition-ease), box-shadow 0.5s var(--transition-ease); }
+.service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(244, 162, 97, 0.25); }
+.luxury-img-container { position: relative; height: 240px; overflow: hidden; }
+.luxury-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--transition-ease); }
+.luxury-img-container:hover .luxury-img { transform: scale(1.1); }
+.img-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); }
+.service-title { font-family: 'Playfair Display', serif; color: var(--safari-amber); font-weight: 700; }
+.service-desc { color: #EEE; font-size: 0.95rem; min-height: 60px; }
+.btn-gold { background: var(--sunset-blaze); color: #000; font-weight: 700; transition: transform 0.4s var(--transition-ease); }
+.btn-gold:hover { transform: translateY(-4px); color: #000; }
+.hover-grow { transition: transform 0.4s var(--transition-ease); }
+.hover-grow:hover { transform: scale(1.06); }
+.gold-border { border: 1px solid rgba(244, 162, 97, 0.5) !important; }
+</style>
+
+<div class="sacred-pillars">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="text-uppercase fw-bold">Why Choose <span class="text-warning">
+E.M Adventure Tanzania </span></h2>
+      <p class="text-danger fst-italic lead">An adventure that transforms your soul.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="pillar">
+          <i class="fas fa-map-marked-alt"></i>
+          <h5>Authentic Local Expertise</h5>
+          <p>Our guides, born near Mt. Kilimanjaro, share the mountain's secrets, stories, and soul, ensuring an immersive experience.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="pillar">
+          <i class="fas fa-shield-alt"></i>
+          <h5>Unmatched Safety Standards</h5>
+          <p>From daily health checks to premium high-altitude gear, we prioritize your safety with world-class standards.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="pillar">
+          <i class="fas fa-heart"></i>
+          <h5>Heartfelt, Lasting Memories</h5>
+          <p>From singing with porters to celebrating at Uhuru Peak, every moment is crafted to leave a lasting impact.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="kilimanjaro-section py-5">
+  <div class="bg-icons">
+    <i class="fas fa-mountain icon-1"></i>
+    <i class="fas fa-compass icon-2"></i>
+    <i class="fas fa-binoculars icon-3"></i>
+    <i class="fas fa-hiking icon-4"></i>
+  </div>
+  <div class="container position-relative">
+    <div class="text-center mb-5">
+      <div class="d-inline-flex align-items-center justify-content-center mb-2" style="gap: 10px;">
+        <i class="fas fa-crown" style="color: var(--safari-amber); font-size: 1.3rem;"></i>
+        <span class="text-uppercase" style="color: var(--safari-amber); letter-spacing: 3.5px; font-weight: 700;">Epic Journeys</span>
+      </div>
+      <h1 class="display-5 fw-bold mb-3">Mt Kilimanjaro & Tanzania Safaris</h1>
+      <div class="mx-auto mb-4" style="width: 200px; height: 5px; background: linear-gradient(90deg, rgba(244,162,97,0) 0%, var(--safari-amber) 50%, rgba(244,162,97,0) 100%); border-radius: 50px;"></div>
+    </div>
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10 text-center">
+        <p class="lead">Conquer <strong>Mt Kilimanjaro</strong> via iconic routes like <strong>Machame</strong>, <strong>Lemosho</strong>, or <strong>Marangu</strong>, each offering unparalleled views and adventure.</p>
+        <p>Extend your journey with luxurious safaris in <strong>Serengeti</strong>, <strong>Ngorongoro Crater</strong>, and <strong>Tarangire</strong>, featuring gourmet lodges and Big Five encounters.</p>
+      </div>
+    </div>
+    <div id="safariCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden">
+      <div class="carousel-inner">
+        {% for item in climbing %}
+          {% if item.image_1 %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="carousel-image-wrapper">
+              <img src="{{item.image_1}}" class="d-block w-100" alt="{{item.title_1}}">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-caption-top">
+                <h3>{{item.title_1}}</h3>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if item.image_2 %}
+          <div class="carousel-item">
+            <div class="carousel-image-wrapper">
+              <img src="{{item.image_2}}" class="d-block w-100" alt="{{item.title_2}}">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-caption-top">
+                <h3>{{item.title_2}}</h3>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if item.image_3 %}
+          <div class="carousel-item">
+            <div class="carousel-image-wrapper">
+              <img src="{{item.image_3}}" class="d-block w-100" alt="{{item.title_3}}">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-caption-top">
+                <h3>{{item.title_3}}</h3>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if item.image_4 %}
+          <div class="carousel-item">
+            <div class="carousel-image-wrapper">
+              <img src="{{item.image_4}}" class="d-block w-100" alt="{{item.title_4}}">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-caption-top">
+                <h3>{{item.title_4}}</h3>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if item.image_5 %}
+          <div class="carousel-item">
+            <div class="carousel-image-wrapper">
+              <img src="{{item.image_5}}" class="d-block w-100" alt="{{item.title_5}}">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-caption-top">
+                <h3>{{item.title_5}}</h3>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#safariCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#safariCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="timeless-scrolls">
+  <div class="container">
+    <h2>🧭 Best Time to Climb Mount Kilimanjaro</h2>
+    <p>Plan your ascent of Africa's highest peak with optimal timing for clear views and safer trails.</p>
+    <div class="scroll-container">
+      <div class="scroll-vault">
+        <h2 class="text-success">🌞 Recommended Seasons:</h2>
+        <ul class="recommended-scroll">
+          <li>✔️ <strong>January to early March</strong> – Warm, moderate traffic, stunning vistas.</li>
+          <li>✔️ <strong>June to October</strong> – Dry season, peak visibility, ideal for climbing.</li>
+        </ul>
+      </div>
+      <div class="scroll-vault">
+        <p class="avoid-scroll">
+          <h6 class="text-danger fw-semibold">🚫 Avoid These Months:</h6>
+          April to May and November – Rainy seasons bring muddy trails, low visibility, and reduced summit success.
+        </p>
+        <img src="{% static 'img/Kilimanjaro.jpg' %}" alt="Kilimanjaro Season" class="img-fluid rounded-4 border border-warning shadow-lg" style="max-height: 500px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% comment %}
+<div class="packing-scrolls">
+  <div class="container">
+    <h2>🧳 Essential Packing for Kilimanjaro</h2>
+    <p>Pack smart to stay comfortable and safe from rainforest to summit.</p>
+    <div class="packing-grid">
+      <div class="packing-vault">
+        <div class="packing-icon">🧥</div>
+        <h5 style="color: #000;">Technical Clothing</h5>
+        <ul>
+          <li><strong>Thermal underwear:</strong> Base layer for warmth.</li>
+          <li><strong>Insulated mid-layers:</strong> Fleece/down jackets.</li>
+          <li><strong>Waterproof outer layers:</strong> Jacket and trousers.</li>
+          <li><strong>Wool socks & gloves:</strong> Multiple pairs.</li>
+          <li><strong>Neck gaiter / Buff:</strong> Dust and cold protection.</li>
+          <li><strong>Sun hat & beanie:</strong> Sun and cold coverage.</li>
+          <li><strong>Hiking boots:</strong> Waterproof, broken-in.</li>
+        </ul>
+      </div>
+      <div class="packing-vault">
+        <div class="packing-icon">💊</div>
+        <h5 style="color: #000;">Health & Hygiene</h5>
+        <ul>
+          <li><strong>Altitude meds:</strong> Diamox (consult doctor).</li>
+          <li><strong>First aid kit:</strong> Plasters, painkillers.</li>
+          <li><strong>Sunscreen SPF 30+:</strong> High-altitude UV protection.</li>
+          <li><strong>Biodegradable wipes:</strong> For camp hygiene.</li>
+          <li><strong>Hand sanitizer:</strong> Quick cleanliness.</li>
+          <li><strong>Lip balm with SPF:</strong> Prevent chapping.</li>
+          <li><strong>Toilet paper:</strong> Essential backup.</li>
+        </ul>
+      </div>
+      <div class="packing-vault">
+        <div class="packing-icon">🎒</div>
+        <h5 style="color: #000;">Essentials & Accessories</h5>
+        <ul>
+          <li><strong>Backpack (30-40L):</strong> Day essentials.</li>
+          <li><strong>Headlamp:</strong> For summit night.</li>
+          <li><strong>Water bottles (3L):</strong> Stay hydrated.</li>
+          <li><strong>Energy snacks:</strong> Bars, nuts, chocolate.</li>
+          <li><strong>Camera or GoPro:</strong> Capture moments.</li>
+          <li><strong>Power bank:</strong> Keep devices charged.</li>
+          <li><strong>Trekking poles:</strong> Support for descents.</li>
+          <li><strong>Dry bags:</strong> Keep gear dry.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcomment %}
+
+<div class="timeless-scrolls">
+  <div class="container">
+    <h2>🦁 Best Time for Tanzania Safari</h2>
+    <p>Time your safari to witness the Great Migration and vibrant wildlife in Serengeti, Ngorongoro, and Tarangire.</p>
+    <div class="scroll-container">
+      <div class="scroll-vault">
+        <h2 class="text-success">🌞 Recommended Seasons:</h2>
+        <ul class="recommended-scroll">
+          <li>✔️ <strong>June to October</strong> – Dry season, ideal for game viewing.</li>
+          <li>✔️ <strong>December to March</strong> – Calving season, lush landscapes.</li>
+        </ul>
+      </div>
+      <div class="scroll-vault">
+        <p class="avoid-scroll">
+          <h6 class="text-danger fw-semibold">🚫 Avoid These Months:</h6>
+          April and May – Heavy rains, muddy roads, limited wildlife visibility.
+        </p>
+        <img src="{% static 'img/safari.webp' %}" alt="Tanzania Safari Season" class="img-fluid rounded-4 border border-warning shadow-lg" style="max-height: 500px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% comment %}
+<div class="packing-scrolls">
+  <div class="container">
+    <h2>🧳 Safari Packing Essentials</h2>
+    <p>Be prepared for an unforgettable safari with these must-have items.</p>
+    <div class="packing-grid">
+      <div class="packing-vault">
+        <div class="packing-icon">🧥</div>
+        <h5 style="color: var(--safari-amber);">Safari Clothing</h5>
+        <ul>
+          <li><strong>Neutral-colored clothes:</strong> Blend with nature.</li>
+          <li><strong>Warm jacket:</strong> For cold mornings/evenings.</li>
+          <li><strong>Hat & sunglasses:</strong> Sun protection.</li>
+          <li><strong>Walking shoes:</strong> For bush walks.</li>
+          <li><strong>Rain jacket:</strong> For unpredictable showers.</li>
+        </ul>
+      </div>
+      <div class="packing-vault">
+        <div class="packing-icon">💊</div>
+        <h5 style="color: var(--safari-amber);">Health & Hygiene</h5>
+        <ul>
+          <li><strong>Malaria prophylaxis:</strong> Consult doctor.</li>
+          <li><strong>First aid kit:</strong> Basic meds, plasters.</li>
+          <li><strong>Sunscreen SPF 30+:</strong> Intense sun protection.</li>
+          <li><strong>Insect repellent:</strong> Evening protection.</li>
+          <li><strong>Hand sanitizer & wipes:</strong> Quick hygiene.</li>
+        </ul>
+      </div>
+      <div class="packing-vault">
+        <div class="packing-icon">🎒</div>
+        <h5 style="color: var(--safari-amber);">Safari Essentials</h5>
+        <ul>
+          <li><strong>Binoculars:</strong> Close-up wildlife views.</li>
+          <li><strong>Camera with zoom:</strong> Capture moments.</li>
+          <li><strong>Power bank:</strong> Keep devices charged.</li>
+          <li><strong>Reusable water bottle:</strong> Stay hydrated.</li>
+          <li><strong>Travel documents:</strong> Passport, insurance.</li>
+          <li><strong>Field guide book:</strong> Learn about wildlife.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endcomment %}
+
+<section class="exclusive-destinations py-5">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <div class="luxury-label d-inline-block px-4 py-2 mb-3">
+        <i class="fas fa-crown me-2"></i> Handpicked Escapes
+      </div>
+      <h1 class="display-5 fw-bold mb-2 title">
+        Tanzania <span class="highlight">Premier</span> Destinations
+      </h1>
+      <div class="luxury-divider mx-auto"></div>
+      <p class="text-muted mt-3 mb-0">Explore Tanzania's most breathtaking destinations ✨</p>
+    </div>
+
+    <div class="row g-4">
+      {% for dest in destinations %}
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="destination-card">
+          <div class="card-image">
+            <img src="{{ dest.image }}" alt="{{ dest.name }}">
+            {% if dest.Offer_in_percent %}
+            <span class="badge offer"><i class="fas fa-gem me-1"></i>{{ dest.Offer_in_percent }}% OFF</span>
+            {% endif %}
+            {% if dest.exclusive %}
+            <span class="badge exclusive"><i class="fas fa-star me-1"></i>EXCLUSIVE</span>
+            {% endif %}
+          </div>
+          <div class="card-content">
+            <h5>{{ dest.name }}</h5>
+            <p><i class="fas fa-map-marker-alt text-gold me-2"></i>{{ dest.location }}</p>
+            <a href="{% url 'destination_detail' dest.pk %}" class="btn btn-luxury" onclick="showLoading(event)">
+              VIEW DETAILS <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="{% url 'destinations_list' %}" class="explore-link" onclick="showLoading(event)">
+        EXPLORE ALL DESTINATIONS <i class="fas fa-arrow-right ms-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="treasure-trove">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h6 class="section-title text-center text-warning bg-dark px-3 rounded-pill">Our Packages</h6>
+      <h1 class="display-5 fw-bold text-danger">Epic Safari & Trekking Journeys</h1>
+      <p class="fw-bold text-white">Select from our curated tours for an unforgettable adventure.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      {% for pac in safari_list %}
+      <div class="col-lg-4 col-md-6">
+        <div class="card package-card bg-transparent text-white border-0 shadow-lg overflow-hidden">
+          <div class="card-img position-relative">
+            <img src="{{ pac.featured_image }}" alt="{{ pac.location }}">
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(7, 7, 7, 0.4);"></div>
+            <div class="position-absolute bottom-0 start-0 p-4">
+              <h4 class="fw-bold text-warning mb-1">{{ pac.location }}</h4>
+              <small class="text-light">{{ pac.days }} Days {{ pac.safari_type }}</small>
+            </div>
+          </div>
+          <div class="card-body bg-dark bg-opacity-75 p-4">
+            <p class="mb-2 text-white-50">Starting From</p>
+            <h3 class="text-warning fw-bold mb-2">${{ pac.price }}</h3>
+            <small class="text-muted">Per person</small>
+            <div class="mt-3 text-center">
+              <a href="{% url 'safari_detail' pac.id %}" class="btn btn-warning text-dark fw-semibold rounded-pill px-4 py-2 shadow" onclick="showLoading(event)">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+<section class="py-5"  style="background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+          <img src="https://africaadventurevacations.com/wp-content/uploads/2022/07/Reasons-for-exploring-Zanzibar.jpg" class="card-img-top" alt="Explore Zanzibar">
+          <div class="card-body p-4">
+            <h3 style="color: rgb(255, 0, 0);" class="card-title text-center mb-3">EXPLORE ZANZIBAR BEACH HOLIDAYS</h3>
+            <h5 style="color: rgb(14, 61, 10);" class="card-title text-center mb-3">Relax, Recharge and Enjoy The Sun - Kissed beaches</h5>
+            <p class="card-text text-muted" style="line-height: 1.7;">
+              Explore Zanzibar, an exotic island paradise off the coast of Tanzania, where stunning beaches, rich history, and vibrant culture come together to create an unforgettable experience. Relax on the white sandy shores of Nungwi, Kendwa, and Paje, or dive into the crystal-clear waters teeming with marine life. Discover the UNESCO-listed Stone Town, a fascinating blend of Arab, Persian, Indian, and European influences, with its narrow alleys, bustling markets, and historic sites like the House of Wonders and the Old Fort.
+            </p>
+            <div class="text-center mt-4">
+              <a href="{% url 'explore_zanzibar' %}" class="btn btn-success btn-lg rounded-pill px-5"onclick="showLoading(event)">
+                Explore More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="legendary-saga py-5t" style="background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+          <div id="serengetiCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                                <img src="https://gie.co.tz/wp-content/uploads/2019/07/serengeti-wildebeest-migration.jpg" class="d-block w-100" alt="Serengeti Migration">
+              </div>
+              <div class="carousel-item">
+                <img src="https://www.focuseastafricatours.com/wp-content/uploads/3-Days-Serengeti-Wildebeest-Migration-Safari.jpg" class="d-block w-100" alt="Serengeti Plains">
+              </div>
+              <div class="carousel-item">
+                <img src="https://www.focuseastafricatours.com/wp-content/uploads/2-Days-Nyungwe-forest-chimpanzee-trekking-safarisssss.jpg" class="d-block w-100" alt="Migration Herd">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#serengetiCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#serengetiCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="card-body p-4">
+            <h3 style="color: rgb(255, 3, 3);" class="card-title text-center mb-3">CIRCLE OF LIFE: WITNESS THE SERENGETI WILDEBEEST MIGRATION'S DRAMA AND BEAUTY</h3>
+            <p class="card-text text-muted" style="line-height: 1.7;">
+              The Great Serengeti Wildebeest Migration is one of the most remarkable wildlife spectacles on the planet, showcasing the raw power and beauty of nature. Each year, over 1.5 million wildebeest, along with hundreds of thousands of zebras and gazelles, embark on an epic journey across the vast Serengeti plains in Tanzania, into Kenya's Masai Mara. This massive migration covers over 1,800 miles in search of fresh grass and water, following seasonal rainfall patterns.
+            </p>
+            <div class="text-center mt-4">
+              <a href="{% url 'serengeti_migration' %}" class="btn btn-success btn-lg rounded-pill px-5" onclick="showLoading(event)">
+                Explore More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="honeymoon-hero py-5" style="background: linear-gradient(135deg, #2a3c24 0%, #5c3f1a 50%, #d4a017 100%); position: relative; overflow: hidden;">
+  <div class="container">
+    <!-- Heading -->
+    <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.2s">
+      <h6 class="section-title mb-0 text-uppercase tracking-widest" style="letter-spacing: 3px; color: #d4a017; font-weight: 600; font-family: 'Lora', serif;">
+        <i class="fas fa-heart me-2"></i>Romantic Escapes
+      </h6>
+      <h1 class="display-4 fw-light mb-3" style="color: #fff; font-family: 'Playfair Display', serif;">
+        Tanzania <span class="fw-bold" style="background: linear-gradient(135deg, #d4a017 0%, #f4c03f 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Honeymoon Safaris</span>
+      </h1>
+      <div class="mx-auto" style="width: 120px; height: 3px; background: linear-gradient(90deg, rgba(212,160,23,0) 0%, #d4a017 50%, rgba(212,160,23,0) 100%); border-radius: 50px;"></div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-12">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden safari-card">
+          <!-- Carousel Start -->
+          <div id="honeymoonCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <!-- Slide 1 -->
+              <div class="carousel-item active">
+                <div class="safari-img-container">
+                  <img src="https://jayvaafricanadventures.com/en/images/Luxury-African-Honeymoon-Safaris.jpg" class="d-block w-100 safari-img" alt="Luxury Honeymoon">
+                  <div class="carousel-caption safari-caption">
+                    <h3 style="color: orange;" class="fw-bold" style="font-family: 'Playfair Display', serif;">Luxury African Honeymoon</h3>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="carousel-item">
+                <div class="safari-img-container">
+                  <img src="https://artofsafari.travel/wp-content/uploads/2017/10/Botswana_Linyanti_WildernessSafaris_KingsPool_Dining_GameDrive_Sundowners.jpg" class="d-block w-100 safari-img" alt="Serengeti Adventure">
+                  <div class="carousel-caption safari-caption">
+                    <h3 style="color: orange;" class="fw-bold" style="font-family: 'Playfair Display', serif;">Serengeti Wildlife Adventure</h3>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-item">
+                <div class="safari-img-container">
+                  <img src="https://artofsafari.travel/wp-content/uploads/2017/10/BANNER-Zambia_VictoriaFalls_AnantaraTheRoyalLivingstone_PicnicWithZebrasOnLawn.jpg" class="d-block w-100 safari-img" alt="Ngorongoro Crater">
+                  <div class="carousel-caption safari-caption">
+                    <h3 class="fw-bold" style="font-family: 'Playfair Display', serif;">Ngorongoro Crater Romance</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#honeymoonCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#honeymoonCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <!-- Carousel End -->
+
+          <!-- Card Body -->
+          <div class="card-body p-5" style="background: rgba(0, 0, 0, 0.7);">
+            <p class="card-text text-light" style="line-height: 1.8; font-family: 'Lora', serif; font-size: 1.1rem;">
+              Embark on a romantic journey with <b>Tanzania honeymoon safaris</b>, where love meets adventure. Witness the breathtaking <b>Great Migration</b> in the <b>Serengeti</b>, explore the wildlife-rich <b>Ngorongoro Crater</b>, or find serenity in the exclusive <b>Selous Game Reserve</b>. Unwind in luxury lodges surrounded by the beauty of <b>Tarangire’s</b> ancient baobabs, creating unforgettable memories with your loved one.
+            </p>
+            <div class="text-center mt-4">
+              <a href="{% url 'honeymoon_safaris' %}" class="btn btn-safari-gold btn-lg rounded-pill px-5 py-3 shadow hover-grow" style="font-family: 'Lora', serif; font-weight: 500;" onclick="showLoading(event)">
+                <span class="position-relative z-2">Plan Your Romantic Safari <i class="fas fa-arrow-right ms-2"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    {% include 'booking_form.html' %}
+
+
+    {% load static %}
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+  <div class="container text-center">
+    <h3 class="reviews-title">Reviews</h3>
+    <p class="reviews-subtitle">Discover what our clients say about their journeys</p>
+
+    <div class="owl-carousel review-carousel">
+      {% for test in testimonial %}
+      <div class="review-card">
+        <!-- Profile Image -->
+        <div class="review-image">
+          <img src="{{ test.image|default:'{% static "img/default-testimonial.jpg" %}' }}" alt="{{ test.Full_name }}">
+        </div>
+
+        <!-- Review Text -->
+        <p class="review-text">
+          {{ test.description }}
+        </p>
+
+        <!-- Reviewer Info -->
+        <h5 class="review-name">{{ test.Full_name }}</h5>
+        <p class="review-source">Google Reviews</p>
+        <div class="review-stars">
+          ⭐⭐⭐⭐⭐
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="review-controls mt-3">
+      <button class="review-btn prev">‹ Prev</button>
+      <button class="review-btn next">Next ›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CSS ================= -->
+<style>
+.reviews-section {
+  background: url("{% static 'img/birdwatching.jpg' %}") center/cover no-repeat;
+  padding: 100px 0;
+  color: white;
+  position: relative;
+}
+
+.reviews-title {
+  color: #f6b10c;
+  font-size: 28px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.reviews-subtitle {
+  color: #eee;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+
+.review-card {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.review-image {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px auto;
+}
+
+.review-image img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f6b10c;
+  box-shadow: 0 0 15px rgba(246, 177, 12, 0.4);
+}
+
+.review-text {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review-name {
+  color: #f6b10c;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.review-source {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.review-stars {
+  font-size: 18px;
+  color: #ffcc00;
+}
+
+.review-btn {
+  background: #f6b10c;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin: 5px;
+  cursor: pointer;
+  color: #000;
+  font-weight: 600;
+}
+
+.review-btn:hover {
+  background: #ffc107;
+}
+
+.owl-carousel .owl-nav {
+  display: none;
+}
+</style>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<script>
+  $(document).ready(function(){
+    $(".review-carousel").owlCarousel({
+      items: 1,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 6000,
+      autoplayHoverPause: true,
+      dots: false,
+      nav: false,
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn'
+    });
+
+    $(".review-btn.prev").click(function() {
+      $(".review-carousel").trigger('prev.owl.carousel');
+    });
+
+    $(".review-btn.next").click(function() {
+      $(".review-carousel").trigger('next.owl.carousel');
+    });
+  });
+</script>
+
+
+
+    {% endblock %}

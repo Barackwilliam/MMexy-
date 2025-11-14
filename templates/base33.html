@@ -1,0 +1,1058 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>E.M Adventure Tanzania</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- SEO Basics -->
+  <meta name="description" content="Embark on thrilling journeys, discover hidden gems, and create unforgettable memories in every corner of Tanzania and beyond.">
+  <meta name="keywords" content="Tanzania adventures, safari, hiking, Kilimanjaro, Serengeti, Zanzibar, travel Africa">
+  <meta name="author" content="Emadventure Adventure Tanzania">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Emadventure Adventure Tanzania" />
+  <meta property="og:description" content="Embark on thrilling journeys, discover hidden gems, and create unforgettable memories in every corner of Tanzania and beyond." />
+  <meta property="og:image" content="{% static 'img/logo.jpg' %}" />
+  <meta property="og:image:alt" content="Emadventure Adventure Tanzania Logo" />
+  <meta property="og:url" content="www.emadventuretanzania.com" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+  
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  
+  <style>
+    :root {
+      --electric-purple: #8A2BE2;
+      --vibrant-orange: #FF6B35;
+      --deep-cyan: #00CED1;
+      --magenta: #FF00FF;
+      --dark-slate: #2F4F4F;
+      --cream: #FFFDD0;
+      --neon-pink: #FF1493;
+      --luxury-gold: #FFD700;
+      --shadow-glow: 0 8px 25px rgba(138, 43, 226, 0.3);
+      --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); */
+      color: var(--cream);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 206, 209, 0.05) 0%, transparent 50%); */
+      z-index: -1;
+    }
+
+    /* Premium Navigation */
+    .luxury-navbar {
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 2px solid var(--electric-purple);
+      box-shadow: var(--shadow-glow);
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.4s var(--transition-bounce);
+    }
+
+    .luxury-navbar.scrolled {
+      background: rgba(10, 10, 10, 0.98);
+      padding: 0.7rem 0;
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .navbar-brand img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 3px solid var(--electric-purple);
+      margin-right: 12px;
+      transition: all 0.4s var(--transition-bounce);
+    }
+
+    .navbar-brand:hover img {
+      transform: rotate(360deg) scale(1.1);
+      border-color: var(--vibrant-orange);
+      box-shadow: 0 0 20px var(--electric-purple);
+    }
+
+    .nav-link {
+      color: var(--cream) !important;
+      font-weight: 500;
+      padding: 0.8rem 1.2rem !important;
+      margin: 0 0.3rem;
+      border-radius: 25px;
+      transition: all 0.4s var(--transition-bounce);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange));
+      transition: left 0.4s var(--transition-bounce);
+      z-index: -1;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+      left: 0;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: rgb(255, 251, 251) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+    }
+
+    .book-now-btn {
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange));
+      color: white !important;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      transition: all 0.4s var(--transition-bounce);
+      box-shadow: var(--shadow-glow);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .book-now-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(138, 43, 226, 0.6);
+    }
+
+    /* MODERN SIDEBAR WITH ADVANCED DROPDOWN */
+    .modern-sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 320px;
+      height: 100vh;
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+      box-shadow: 5px 0 30px rgba(138, 43, 226, 0.3);
+      transition: all 0.5s var(--transition-bounce);
+      z-index: 1100;
+      overflow-y: auto;
+    }
+
+    .modern-sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-header {
+      padding: 2rem;
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite linear;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .sidebar-header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--cream);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar-header h3 {
+      color: var(--cream);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar-nav {
+      padding: 1rem 0;
+    }
+
+    .sidebar-item {
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-link {
+      color: var(--cream);
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .sidebar-link:hover::before {
+      left: 100%;
+    }
+
+    .sidebar-link:hover {
+      background: rgba(138, 43, 226, 0.1);
+      padding-left: 2.5rem;
+    }
+
+    .sidebar-link i:first-child {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      width: 25px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-link:hover i:first-child {
+      transform: scale(1.2);
+      color: var(--vibrant-orange);
+    }
+
+    .dropdown-arrow {
+      transition: transform 0.4s var(--transition-bounce);
+      font-size: 0.9rem;
+      color: var(--deep-cyan);
+    }
+
+    .sidebar-item.active .dropdown-arrow {
+      transform: rotate(180deg);
+      color: var(--vibrant-orange);
+    }
+
+    /* ADVANCED DROPDOWN STYLES */
+    .sidebar-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s var(--transition-bounce);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar-item.active .sidebar-dropdown {
+      max-height: 500px;
+    }
+
+    .dropdown-item {
+      color: var(--cream);
+      padding: 1rem 2rem 1rem 3.5rem;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      border-left: 3px solid transparent;
+    }
+
+    .dropdown-item::before {
+      content: '';
+      position: absolute;
+      left: 2rem;
+      width: 6px;
+      height: 6px;
+      background: var(--deep-cyan);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(255, 107, 53, 0.1);
+      border-left: 3px solid var(--vibrant-orange);
+      padding-left: 4rem;
+    }
+
+    .dropdown-item:hover::before {
+      background: var(--vibrant-orange);
+      transform: scale(1.5);
+    }
+
+    .dropdown-item i {
+      margin-right: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--deep-cyan);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover i {
+      color: var(--vibrant-orange);
+      transform: scale(1.2);
+    }
+
+    /* Badge for new items */
+    .dropdown-badge {
+      background: linear-gradient(45deg, var(--neon-pink), var(--electric-purple));
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: auto;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 1050;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Close button */
+    .sidebar-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--cream);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .sidebar-close:hover {
+      background: var(--vibrant-orange);
+      transform: rotate(90deg);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{% static 'img/booking.jpg' %}") center/cover;
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange), var(--deep-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 20px var(--electric-purple);
+      }
+      to {
+        text-shadow: 0 0 30px var(--vibrant-orange), 0 0 40px var(--deep-cyan);
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--cream);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange));
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s var(--transition-bounce);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--cream);
+      padding: 1rem 2.5rem;
+      border: 2px solid var(--electric-purple);
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s var(--transition-bounce);
+    }
+
+    .btn-primary-custom:hover,
+    .btn-outline-custom:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(138, 43, 226, 0.4);
+    }
+
+    /* Cards */
+    .luxury-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      overflow: hidden;
+      transition: all 0.4s var(--transition-bounce);
+      position: relative;
+    }
+
+    .luxury-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .luxury-card:hover::before {
+      transform: translateX(100%);
+    }
+
+    .luxury-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
+      border-color: var(--electric-purple);
+    }
+
+    /* Footer */
+    .luxury-footer {
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+      border-top: 2px solid var(--electric-purple);
+      padding: 4rem 0 2rem;
+      position: relative;
+    }
+
+    .footer-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--electric-purple), var(--vibrant-orange));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px) rotate(10deg);
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
+    }
+
+    .whatsapp-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #25D366, #128C7E);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.4s var(--transition-bounce);
+      animation: pulse-whatsapp 2s infinite;
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.2) rotate(10deg);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.4rem;
+      }
+      
+      .navbar-brand img {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .modern-sidebar {
+        width: 300px;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn-primary-custom,
+      .btn-outline-custom {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .sidebar-link {
+        padding: 1rem 1.5rem;
+      }
+      
+      .dropdown-item {
+        padding: 0.8rem 1.5rem 0.8rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Spinner -->
+  <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="luxury-navbar navbar navbar-expand-lg">
+    <div class="container">
+      <a href="{% url 'index' %}" class="navbar-brand">
+        {% for i in compan %}
+        <img src="{{i.image|default:'{% static "img/logo.jpg" %}' }}" alt="Logo">
+        <span>{{i.company_name|default:'E.M Adventure Tanzania'}}</span>
+        {% empty %}
+        <img src="{% static 'img/logo.jpg' %}" alt="Logo">
+        <span>E.M Adventure Tanzania</span>
+        {% endfor %}
+      </a>
+      
+      <button class="navbar-toggler d-lg-none" type="button" onclick="toggleSidebar()">
+        <i class="fas fa-bars text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="{% url 'service' %}" class="nav-link">Services</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Safari</a>
+            <ul class="dropdown-menu">
+              {% for s in safari_list %}
+              <li><a class="dropdown-item" href="{% url 'safari_detail' s.id %}" style="background-color: #0c0c0c;">{{ s.title }}</a></li>
+              {% empty %}
+              <li><span class="dropdown-item text-muted">No Safari available</span></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Trekking</a>
+            <ul class="dropdown-menu">
+              {% for tour in tours %}
+              <li><a class="dropdown-item" href="{% url 'tour_detail' tour.id %}" style="background-color: black;">{{ tour.title }}</a></li>
+              {% empty %}
+              <li><span class="dropdown-item text-muted">No tours available</span></li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+        <a href="{% url 'contact' %}" class="book-now-btn">
+          <i class="fas fa-calendar-check me-2"></i>Book Now
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MODERN SIDEBAR WITH ADVANCED DROPDOWN -->
+  <div class="modern-sidebar" id="sidebar">
+    <button class="sidebar-close" onclick="toggleSidebar()">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="sidebar-header">
+      {% for i in compan %}
+      <img src="{{i.image|default:'{% static "img/logo.jpg" %}' }}" alt="Logo">
+      <h3>{{i.company_name|default:'E.M Adventure Tanzania'}}</h3>
+      {% empty %}
+      <img src="{% static 'img/logo.jpg' %}" alt="Logo">
+      <h3>E.M Adventure Tanzania</h3>
+      {% endfor %}
+    </div>
+    
+    <div class="sidebar-nav">
+      <!-- Regular Links -->
+      <div class="sidebar-item">
+        <a href="{% url 'index' %}" class="sidebar-link" onclick="toggleSidebar()">
+          <div>
+            <i class="fas fa-home"></i>
+            Home
+          </div>
+        </a>
+      </div>
+      
+      <div class="sidebar-item">
+        <a href="{% url 'about' %}" class="sidebar-link" onclick="toggleSidebar()">
+          <div>
+            <i class="fas fa-info-circle"></i>
+            About Us
+          </div>
+        </a>
+      </div>
+      
+      <div class="sidebar-item">
+        <a href="{% url 'service' %}" class="sidebar-link" onclick="toggleSidebar()">
+          <div>
+            <i class="fas fa-concierge-bell"></i>
+            Services
+          </div>
+        </a>
+      </div>
+
+      <!-- Safari Dropdown -->
+      <div class="sidebar-item" onclick="toggleDropdown(this)">
+        <a href="#" class="sidebar-link">
+          <div>
+            <i class="fas fa-paw"></i>
+            Safari Tours
+          </div>
+          <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="sidebar-dropdown">
+          {% for s in safari_list %}
+          <a href="{% url 'safari_detail' s.id %}" class="dropdown-item" onclick="toggleSidebar()">
+            <i class="fas fa-hippo"></i>
+            {{ s.title }}
+            {% if forloop.first %}<span class="dropdown-badge">New</span>{% endif %}
+          </a>
+          {% empty %}
+          <a class="dropdown-item">
+            <i class="fas fa-exclamation-triangle"></i>
+            No Safari available
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Trekking Dropdown -->
+      <div class="sidebar-item" onclick="toggleDropdown(this)">
+        <a href="#" class="sidebar-link">
+          <div>
+            <i class="fas fa-mountain"></i>
+            Trekking
+          </div>
+          <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="sidebar-dropdown">
+          {% for tour in tours %}
+          <a href="{% url 'tour_detail' tour.id %}" class="dropdown-item" onclick="toggleSidebar()">
+            <i class="fas fa-hiking"></i>
+            {{ tour.title }}
+            {% if forloop.counter <= 2 %}<span class="dropdown-badge">Popular</span>{% endif %}
+          </a>
+          {% empty %}
+          <a class="dropdown-item">
+            <i class="fas fa-exclamation-triangle"></i>
+            No tours available
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Day Trips Dropdown -->
+      <div class="sidebar-item" onclick="toggleDropdown(this)">
+        <a href="#" class="sidebar-link">
+          <div>
+            <i class="fas fa-sun"></i>
+            Day Trips
+          </div>
+          <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="sidebar-dropdown">
+          {% for d in trips_list %}
+          <a href="{% url 'Trip_detail' d.id %}" class="dropdown-item" onclick="toggleSidebar()">
+            <i class="fas fa-car-side"></i>
+            {{ d.title }}
+          </a>
+          {% empty %}
+          <a class="dropdown-item">
+            <i class="fas fa-exclamation-triangle"></i>
+            No Day Trip available
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Others Dropdown -->
+      <div class="sidebar-item" onclick="toggleDropdown(this)">
+        <a href="#" class="sidebar-link">
+          <div>
+            <i class="fas fa-globe-africa"></i>
+            More Options
+          </div>
+          <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="sidebar-dropdown">
+          <a href="{% url 'destinations_list' %}" class="dropdown-item" onclick="toggleSidebar()">
+            <i class="fas fa-map-marked-alt"></i>
+            Destinations
+          </a>
+          <a href="{% url 'testimonial' %}" class="dropdown-item" onclick="toggleSidebar()">
+            <i class="fas fa-quote-left"></i>
+            Testimonials
+          </a>
+          <a href="{% url 'contact' %}" class="dropdown-item" onclick="toggleSidebar()">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+          </a>
+          <a href="{% url 'questions' %}" class="dropdown-item" onclick="toggleSidebar()">
+            <i class="fas fa-question-circle"></i>
+            FAQ
+            <span class="dropdown-badge">Help</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Link -->
+      <div class="sidebar-item">
+        <a href="{% url 'contact' %}" class="sidebar-link" onclick="toggleSidebar()">
+          <div>
+            <i class="fas fa-phone-alt"></i>
+            Contact Us
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    {% block content %}
+    <!-- Default Hero Section -->
+    <section class="hero-section">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Discover Tanzania's Wonders</h1>
+        <p class="hero-subtitle">Embark on unforgettable adventures through the heart of Africa's most breathtaking landscapes</p>
+        <div class="cta-buttons">
+          <a href="{% url 'service' %}" class="btn-primary-custom">Explore Adventures</a>
+          <a href="{% url 'contact' %}" class="btn-outline-custom">Book Your Trip</a>
+        </div>
+      </div>
+    </section>
+    {% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="luxury-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h4 class="footer-title">E.M Adventure Tanzania</h4>
+          <p>Creating unforgettable African adventures with luxury and excitement.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Quick Links</h5>
+          <div class="d-flex flex-column">
+            <a href="{% url 'about' %}" class="text-light mb-2 text-decoration-none">About Us</a>
+            <a href="{% url 'service' %}" class="text-light mb-2 text-decoration-none">Services</a>
+            <a href="{% url 'contact' %}" class="text-light mb-2 text-decoration-none">Contact</a>
+            <a href="{% url 'testimonial' %}" class="text-light mb-2 text-decoration-none">Testimonials</a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Contact Info</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Arusha, Sanawari, Tanzania</p>
+          <p><i class="fab fa-whatsapp me-2"></i>+255742276915</p>
+          <p><i class="fas fa-envelope me-2"></i>info@emadventuretanzania.com</p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Newsletter</h5>
+          <p>Subscribe for exclusive offers and adventure updates</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Your email">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4 pt-4 border-top border-secondary">
+        <p>&copy; 2025 E.M Adventure Tanzania. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/255742276915" class="whatsapp-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Spinner
+    window.addEventListener('load', function() {
+      const spinner = document.getElementById('spinner');
+      spinner.style.display = 'none';
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.luxury-navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Sidebar functionality
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    // Advanced Dropdown functionality
+    function toggleDropdown(element) {
+      // Close all other dropdowns
+      const allItems = document.querySelectorAll('.sidebar-item');
+      allItems.forEach(item => {
+        if (item !== element) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle current dropdown
+      element.classList.toggle('active');
+    }
+
+    // Close sidebar when clicking on dropdown links
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function() {
+        toggleSidebar();
+      });
+    });
+
+    // Close sidebar when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('active')) {
+          toggleSidebar();
+        }
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animation on scroll
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.luxury-card, .hero-content');
+      elements.forEach(element => {
+        const position = element.getBoundingClientRect();
+        if (position.top < window.innerHeight - 100) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    }
+
+    // Initialize animations
+    document.querySelectorAll('.luxury-card, .hero-content').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease';
+    });
+
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Initial check
+  </script>
+</body>
+</html>

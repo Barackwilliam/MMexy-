@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name }} Packages</title>
+    <style>
+        .filter-form {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .package-level {
+            margin-bottom: 30px;
+        }
+        .package-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .local { border-left: 4px solid #28a745; }
+        .vip { border-left: 4px solid #ffc107; }
+        .vvip { border-left: 4px solid #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>{{ category.name }} - Travel Packages</h1>
+    
+    <div class="filter-form">
+        <form method="get">
+            {{ form.as_p }}
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+
+    <div class="package-level">
+        <h2>Local Packages</h2>
+        {% for package in local_packages %}
+        <div class="package-card local">
+            <h3>{{ package.name }}</h3>
+            <p>{{ package.description|truncatewords:30 }}</p>
+            <p><strong>Price:</strong> ${{ package.price }} ({{ package.get_price_type_display }})</p>
+            <a href="{% url 'package_detail' package.id %}">View Details</a>
+        </div>
+        {% empty %}
+        <p>No local packages available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="package-level">
+        <h2>VIP Packages</h2>
+        {% for package in vip_packages %}
+        <div class="package-card vip">
+            <h3>{{ package.name }}</h3>
+            <p>{{ package.description|truncatewords:30 }}</p>
+            <p><strong>Price:</strong> ${{ package.price }} ({{ package.get_price_type_display }})</p>
+            <a href="{% url 'package_detail' package.id %}">View Details</a>
+        </div>
+        {% empty %}
+        <p>No VIP packages available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="package-level">
+        <h2>VVIP Packages</h2>
+        {% for package in vvip_packages %}
+        <div class="package-card vvip">
+            <h3>{{ package.name }}</h3>
+            <p>{{ package.description|truncatewords:30 }}</p>
+            <p><strong>Price:</strong> ${{ package.price }} ({{ package.get_price_type_display }})</p>
+            <a href="{% url 'package_detail' package.id %}">View Details</a>
+        </div>
+        {% empty %}
+        <p>No VVIP packages available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

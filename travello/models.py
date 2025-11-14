@@ -810,3 +810,110 @@ class Headline(models.Model):
         return self.name_of_headline
 
 
+
+
+
+
+
+
+
+
+
+
+# class Category(models.Model):
+#     name = models.CharField(max_length=100)
+#     description = models.TextField()
+#     image = models.ImageField(upload_to='categories/')
+    
+#     def __str__(self):
+#         return self.name
+
+# class Package(models.Model):
+#     PACKAGE_LEVELS = (
+#         ('local', 'Local'),
+#         ('vip', 'VIP'),
+#         ('vvip', 'VVIP'),
+#     )
+    
+#     PRICE_TYPES = (
+#         ('single', 'Single Person'),
+#         ('family', 'Family'),
+#         ('group', 'Group'),
+#     )
+    
+#     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=200)
+#     description = models.TextField()
+#     image = models.ImageField(upload_to='packages/')
+#     package_level = models.CharField(max_length=10, choices=PACKAGE_LEVELS)
+#     price_type = models.CharField(max_length=10, choices=PRICE_TYPES)
+#     price = models.DecimalField(max_digits=10, decimal_places=2)
+#     includes = models.TextField(help_text="List items separated by commas")
+#     excludes = models.TextField(help_text="List items separated by commas")
+#     duration = models.CharField(max_length=100, help_text="e.g., 3 days 2 nights")
+#     created_at = models.DateTimeField(auto_now_add=True)
+    
+#     def __str__(self):
+#         return f"{self.name} - {self.get_package_level_display()}"
+
+# class PackageImage(models.Model):
+#     package = models.ForeignKey(Package, on_delete=models.CASCADE)
+#     image = models.ImageField(upload_to='package_images/')
+    
+#     def __str__(self):
+#         return f"Image for {self.package.name}"
+
+
+
+
+
+from django.db import models
+from django.urls import reverse
+
+class Feature(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    main_image = models.ImageField(upload_to='features/')
+    
+    def __str__(self):
+        return self.name
+
+class Package(models.Model):
+    LEVEL_CHOICES = [
+        ('Local', 'Local'),
+        ('VIP', 'VIP'),
+        ('VVIP', 'VVIP'),
+    ]
+    
+    feature = models.ForeignKey(Feature, on_delete=models.CASCADE)
+    level = models.CharField(max_length=10, choices=LEVEL_CHOICES)
+    price_per_person = models.DecimalField(max_digits=10, decimal_places=2)
+    family_price = models.DecimalField(max_digits=10, decimal_places=2)
+    duration = models.CharField(max_length=100)
+    max_group_size = models.IntegerField()
+    cancellation_policy = models.TextField()
+    
+    def __str__(self):
+        return f"{self.feature.name} - {self.level}"
+
+class IncludedService(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    service_name = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.service_name
+
+class AddOn(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+        return self.name
+
+class PackageImage(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='package_images/')
+    
+    def __str__(self):
+        return f"Image for {self.package}"

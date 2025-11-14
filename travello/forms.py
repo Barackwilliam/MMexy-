@@ -257,3 +257,36 @@ class BookingForm(forms.ModelForm):
     def clean_interested_in(self):
         data = self.cleaned_data.get("interested_in", [])
         return ", ".join(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from django import forms
+# from .models import Category, Package
+
+# class PackageFilterForm(forms.Form):
+#     package_level = forms.ChoiceField(
+#         choices=[('', 'All Levels')] + list(Package.PACKAGE_LEVELS),
+#         required=False
+#     )
+#     price_type = forms.ChoiceField(
+#         choices=[('', 'All Price Types')] + list(Package.PRICE_TYPES),
+#         required=False
+#     )
+#     max_price = forms.DecimalField(
+#         max_digits=10, 
+#         decimal_places=2, 
+#         required=False,
+#         widget=forms.NumberInput(attrs={'placeholder': 'Maximum Price'})
+#     )
