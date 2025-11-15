@@ -6,6 +6,7 @@
     <title>MMexy Tanzania Adventures | Unique Tourism Experiences in Tanzania</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --primary: #1a6d38;
@@ -1785,7 +1786,40 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .destinations-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .destination-hero {
+                flex-direction: column;
+            }
+            
+            .card-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
+            .header-content nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .language-selector {
+                display: none;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -1881,6 +1915,11 @@
             .cta-content h3 {
                 font-size: 1.8rem;
             }
+            
+            .premium-filters {
+                flex-direction: column;
+                align-items: center;
+            }
         }
        
         @media (max-width: 576px) {
@@ -1916,6 +1955,14 @@
             .premium-package-price {
                 font-size: 1.8rem;
             }
+            
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-features {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1935,6 +1982,10 @@
                 padding: 10px 25px;
                 font-size: 0.9rem;
             }
+            
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1944,8 +1995,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-mountain logo-icon"></i>
-                    <h1>MMexy Tanzania</h1>
+                    <i class="fas fa-mountain logo-icon" aria-hidden="true"></i>
+
+                    <h2>MMexy Tanzania</h2>
                 </div>
                
                 <nav>
@@ -1995,7 +2047,7 @@
                 </nav>
                
                 <div class="mobile-menu" id="mobile-menu">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
@@ -2006,11 +2058,11 @@
     <div class="mobile-nav" id="mobile-nav">
         <div class="mobile-nav-header">
             <div class="mobile-nav-logo">
-                <i class="fas fa-mountain"></i>
+                <i class="fas fa-mountain" aria-hidden="true"></i>
                 <h2>MMexy Tanzania</h2>
             </div>
             <button class="close-mobile-nav" id="close-mobile-nav">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" aria-hidden="true"></i>
             </button>
         </div>
         <div class="mobile-nav-content">
@@ -2020,7 +2072,7 @@
                 <li>
                     <a href="#mountain" class="mobile-dropdown-toggle">
                         <span>Mountain</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </a>
                     <ul class="mobile-dropdown">
                         <li><a href="#kilimanjaro">Kilimanjaro Climb</a></li>
@@ -2031,7 +2083,7 @@
                 <li>
                     <a href="#safaris" class="mobile-dropdown-toggle">
                         <span>Safaris</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </a>
                     <ul class="mobile-dropdown">
                         <li><a href="#serengeti">Serengeti National Park</a></li>
@@ -2043,7 +2095,7 @@
                 <li>
                     <a href="#waterfalls" class="mobile-dropdown-toggle">
                         <span>Waterfall</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </a>
                     <ul class="mobile-dropdown">
                         <li><a href="#materuni">Materuni Falls</a></li>
@@ -2067,20 +2119,19 @@
                 <option value="ja">日本語</option>
             </select>
             <div class="mobile-social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
-<br><br>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="artistic-title">Welcome to MMexy Tanzania Adventures</h1>
             <p style="color: white;" class="elegant-text">Land of Kilimanjaro and Zanzibar - Where Adventure Meets Serenity</p>
-            <p style="color: white;" class="calligraphic-text">Experience the natural beauty, fascinating history, and unique culture in your lifetime adventure</p>
             <a href="#destinations" class="btn">Discover Our Destinations</a>
         </div>
     </section>
@@ -2120,7 +2171,7 @@
 <section class="destinations" id="destinations">
     <div class="container">
         <div class="section-title">
-            <h2>Tourism Destinations</h2>
+            <h2>Our Destinations</h2>
             <p class="section-subtitle">Discover Tanzania's Most Iconic Landscapes and Cultural Treasures</p>
             <div class="title-decoration">
                 <div class="decoration-line"></div>
@@ -2134,16 +2185,16 @@
             <div class="destination-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="card-badge">Most Popular</div>
                 <div class="card-image">
-                    <img src="https://www.the-backpacking-site.com/wp-content/uploads/2023/01/1024px-Gereza_at_Kilwa_Kisiwani.jpg" alt="Historical Sites">
+                    <img src="https://www.the-backpacking-site.com/wp-content/uploads/2023/01/1024px-Gereza_at_Kilwa_Kisiwani.jpg" alt="Historical Sites in Tanzania">
                     <div class="image-overlay">
                         <div class="overlay-content">
                             <span class="overlay-text">Explore Ancient Wonders</span>
                             <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star-half-alt" aria-hidden="true"></i>
                                 <span>4.8/5</span>
                             </div>
                         </div>
@@ -2151,9 +2202,9 @@
                 </div>
                 <div class="card-content">
                     <div class="card-header">
-                        <h3><i class="fas fa-landmark"></i> Historical Sites</h3>
+                        <h3><i class="fas fa-landmark" aria-hidden="true"></i> Historical Sites</h3>
                         <div class="duration">
-                            <i class="far fa-clock"></i>
+                            <i class="far fa-clock" aria-hidden="true"></i>
                             <span>1-3 Days</span>
                         </div>
                     </div>
@@ -2161,15 +2212,15 @@
                     
                     <div class="card-features">
                         <div class="feature">
-                            <i class="fas fa-camera"></i>
+                            <i class="fas fa-camera" aria-hidden="true"></i>
                             <span>Photo Opportunities</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-graduation-cap"></i>
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                             <span>Cultural Education</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-map-marked-alt"></i>
+                            <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
                             <span>Guided Tours</span>
                         </div>
                     </div>
@@ -2181,7 +2232,7 @@
                         </div>
                         <a href="#" class="explore-btn" data-destination="historical">
                             <span>Explore Heritage</span>
-                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -2195,16 +2246,16 @@
             <div class="destination-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-badge adventure">Adventure</div>
                 <div class="card-image">
-                    <img src="https://www.easytravel.co.tz/wp-content/uploads/2022/02/Silhouette-of-climbers-climbing-Mount-Kilimanjaro-during-a-golden-hour-morning.jpg" alt="Mountain Climbing">
+                    <img src="https://www.easytravel.co.tz/wp-content/uploads/2022/02/Silhouette-of-climbers-climbing-Mount-Kilimanjaro-during-a-golden-hour-morning.jpg" alt="Mountain Climbing in Tanzania">
                     <div class="image-overlay">
                         <div class="overlay-content">
                             <span class="overlay-text">Conquer Peaks</span>
                             <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
                                 <span>5.0/5</span>
                             </div>
                         </div>
@@ -2212,9 +2263,9 @@
                 </div>
                 <div class="card-content">
                     <div class="card-header">
-                        <h3><i class="fas fa-mountain"></i> Mountain Climbing</h3>
+                        <h3><i class="fas fa-mountain" aria-hidden="true"></i> Mountain Climbing</h3>
                         <div class="duration">
-                            <i class="far fa-clock"></i>
+                            <i class="far fa-clock" aria-hidden="true"></i>
                             <span>5-9 Days</span>
                         </div>
                     </div>
@@ -2222,15 +2273,15 @@
                     
                     <div class="card-features">
                         <div class="feature">
-                            <i class="fas fa-hiking"></i>
+                            <i class="fas fa-hiking" aria-hidden="true"></i>
                             <span>Expert Guides</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-campground"></i>
+                            <i class="fas fa-campground" aria-hidden="true"></i>
                             <span>Mountain Huts</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-medkit"></i>
+                            <i class="fas fa-medkit" aria-hidden="true"></i>
                             <span>Safety First</span>
                         </div>
                     </div>
@@ -2240,7 +2291,7 @@
                         <div class="meter">
                             <div class="meter-fill" style="width: 85%"></div>
                         </div>
-                        <span class="difficulty-text">Challenging</span>
+                        <span class="difficulty-text">Easy</span>
                     </div>
                     
                     <div class="card-footer">
@@ -2250,7 +2301,7 @@
                         </div>
                         <a href="#" class="explore-btn" data-destination="mountain">
                             <span>Begin Ascent</span>
-                            <i class="fas fa-arrow-up"></i>
+                            <i class="fas fa-arrow-up" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -2269,11 +2320,11 @@
                         <div class="overlay-content">
                             <span class="overlay-text">Tropical Paradise</span>
                             <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="far fa-star" aria-hidden="true"></i>
                                 <span>4.6/5</span>
                             </div>
                         </div>
@@ -2281,9 +2332,9 @@
                 </div>
                 <div class="card-content">
                     <div class="card-header">
-                        <h3><i class="fas fa-umbrella-beach"></i> Zanzibar Beaches</h3>
+                        <h3><i class="fas fa-umbrella-beach" aria-hidden="true"></i> Zanzibar Beaches</h3>
                         <div class="duration">
-                            <i class="far fa-clock"></i>
+                            <i class="far fa-clock" aria-hidden="true"></i>
                             <span>3-7 Days</span>
                         </div>
                     </div>
@@ -2291,15 +2342,15 @@
                     
                     <div class="card-features">
                         <div class="feature">
-                            <i class="fas fa-water"></i>
+                            <i class="fas fa-water" aria-hidden="true"></i>
                             <span>Crystal Waters</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-fish"></i>
+                            <i class="fas fa-fish" aria-hidden="true"></i>
                             <span>Marine Life</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-spa"></i>
+                            <i class="fas fa-spa" aria-hidden="true"></i>
                             <span>Luxury Resorts</span>
                         </div>
                     </div>
@@ -2317,7 +2368,7 @@
                         </div>
                         <a href="#" class="explore-btn" data-destination="beaches">
                             <span>Discover Paradise</span>
-                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-sun" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -2331,16 +2382,16 @@
             <div class="destination-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="card-badge cultural">Cultural</div>
                 <div class="card-image">
-                    <img src="https://www.serengetiparktanzania.com/wp-content/uploads/2019/09/Maasai-Tribea.jpg" alt="Cultural Tourism">
+                    <img src="https://www.serengetiparktanzania.com/wp-content/uploads/2019/09/Maasai-Tribea.jpg" alt="Cultural Tourism in Tanzania">
                     <div class="image-overlay">
                         <div class="overlay-content">
                             <span class="overlay-text">Immerse in Traditions</span>
                             <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star-half-alt" aria-hidden="true"></i>
                                 <span>4.7/5</span>
                             </div>
                         </div>
@@ -2348,9 +2399,9 @@
                 </div>
                 <div class="card-content">
                     <div class="card-header">
-                        <h3><i class="fas fa-music"></i> Cultural Tourism</h3>
+                        <h3><i class="fas fa-music" aria-hidden="true"></i> Cultural Tourism</h3>
                         <div class="duration">
-                            <i class="far fa-clock"></i>
+                            <i class="far fa-clock" aria-hidden="true"></i>
                             <span>2-5 Days</span>
                         </div>
                     </div>
@@ -2358,15 +2409,15 @@
                     
                     <div class="card-features">
                         <div class="feature">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-users" aria-hidden="true"></i>
                             <span>Community Visits</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-utensils"></i>
+                            <i class="fas fa-utensils" aria-hidden="true"></i>
                             <span>Local Cuisine</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-hands-helping"></i>
+                            <i class="fas fa-hands-helping" aria-hidden="true"></i>
                             <span>Cultural Exchange</span>
                         </div>
                     </div>
@@ -2384,7 +2435,7 @@
                         </div>
                         <a href="#" class="explore-btn" data-destination="cultural">
                             <span>Experience Culture</span>
-                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -2403,11 +2454,11 @@
                         <div class="overlay-content">
                             <span class="overlay-text">Wildlife Adventure</span>
                             <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
                                 <span>5.0/5</span>
                             </div>
                         </div>
@@ -2415,9 +2466,9 @@
                 </div>
                 <div class="card-content">
                     <div class="card-header">
-                        <h3><i class="fas fa-binoculars"></i> Tanzania Safaris</h3>
+                        <h3><i class="fas fa-binoculars" aria-hidden="true"></i> Tanzania Safaris</h3>
                         <div class="duration">
-                            <i class="far fa-clock"></i>
+                            <i class="far fa-clock" aria-hidden="true"></i>
                             <span>3-10 Days</span>
                         </div>
                     </div>
@@ -2425,15 +2476,15 @@
                     
                     <div class="card-features">
                         <div class="feature">
-                            <i class="fas fa-lion"></i>
+                            <i class="fas fa-lion" aria-hidden="true"></i>
                             <span>Big Five</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-camera"></i>
+                            <i class="fas fa-camera" aria-hidden="true"></i>
                             <span>Photo Safari</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-car"></i>
+                            <i class="fas fa-car" aria-hidden="true"></i>
                             <span>Game Drives</span>
                         </div>
                     </div>
@@ -2451,7 +2502,7 @@
                         </div>
                         <a href="#" class="explore-btn" data-destination="safari">
                             <span>Start Safari</span>
-                            <i class="fas fa-paw"></i>
+                            <i class="fas fa-paw" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -2469,7 +2520,7 @@
                 <p>Explore all our destinations and find your perfect journey</p>
                 <a href="#contact" class="cta-btn">
                     <span>View All Destinations</span>
-                    <i class="fas fa-compass"></i>
+                    <i class="fas fa-compass" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -2569,23 +2620,23 @@
                         <h3>About MMexy Tanzania</h3>
                         <p>MMexy Tanzania Adventures is your premier gateway to authentic Tanzanian experiences. We specialize in crafting unforgettable journeys through Tanzania's most iconic destinations.</p>
                         <div class="footer-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     
                     <div class="footer-column">
                         <h3>Quick Links</h3>
                         <ul class="footer-links">
-                            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                            <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                            <li><a href="#destinations"><i class="fas fa-chevron-right"></i> Destinations</a></li>
-                            <li><a href="#mountain"><i class="fas fa-chevron-right"></i> Mountain Climbing</a></li>
-                            <li><a href="#safaris"><i class="fas fa-chevron-right"></i> Safari Tours</a></li>
-                            <li><a href="#waterfalls"><i class="fas fa-chevron-right"></i> Waterfall Adventures</a></li>
+                            <li><a href="#home"><i class="fas fa-chevron-right" aria-hidden="true"></i> Home</a></li>
+                            <li><a href="#about"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+                            <li><a href="#destinations"><i class="fas fa-chevron-right" aria-hidden="true"></i> Destinations</a></li>
+                            <li><a href="#mountain"><i class="fas fa-chevron-right" aria-hidden="true"></i> Mountain Climbing</a></li>
+                            <li><a href="#safaris"><i class="fas fa-chevron-right" aria-hidden="true"></i> Safari Tours</a></li>
+                            <li><a href="#waterfalls"><i class="fas fa-chevron-right" aria-hidden="true"></i> Waterfall Adventures</a></li>
                         </ul>
                     </div>
                     
@@ -2593,7 +2644,7 @@
                         <h3>Contact Info</h3>
                         <ul class="footer-contact-info">
                             <li>
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                                 <div>
                                     <strong>Head Office</strong><br>
                                     P.O. Box 1234, Zanzibar<br>
@@ -2601,7 +2652,7 @@
                                 </div>
                             </li>
                             <li>
-                                <i class="fas fa-phone"></i>
+                                <i class="fas fa-phone" aria-hidden="true"></i>
                                 <div>
                                     <strong>Phone</strong><br>
                                     +255 714 331 051<br>
@@ -2609,7 +2660,7 @@
                                 </div>
                             </li>
                             <li>
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
                                 <div>
                                     <strong>Email</strong><br>
                                     info@mmexy.com<br>
@@ -2617,7 +2668,7 @@
                                 </div>
                             </li>
                             <li>
-                                <i class="fas fa-clock"></i>
+                                <i class="fas fa-clock" aria-hidden="true"></i>
                                 <div>
                                     <strong>Office Hours</strong><br>
                                     Mon - Fri: 8:00 AM - 6:00 PM<br>
@@ -2637,10 +2688,10 @@
                         <div class="payment-methods">
                             <p><strong>We Accept:</strong></p>
                             <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
-                                <i class="fab fa-cc-visa" style="font-size: 2rem; color: rgba(255,255,255,0.7);"></i>
-                                <i class="fab fa-cc-mastercard" style="font-size: 2rem; color: rgba(255,255,255,0.7);"></i>
-                                <i class="fab fa-cc-paypal" style="font-size: 2rem; color: rgba(255,255,255,0.7);"></i>
-                                <i class="fab fa-cc-amex" style="font-size: 2rem; color: rgba(255,255,255,0.7);"></i>
+                                <i class="fab fa-cc-visa" style="font-size: 2rem; color: rgba(255,255,255,0.7);" aria-hidden="true"></i>
+                                <i class="fab fa-cc-mastercard" style="font-size: 2rem; color: rgba(255,255,255,0.7);" aria-hidden="true"></i>
+                                <i class="fab fa-cc-paypal" style="font-size: 2rem; color: rgba(255,255,255,0.7);" aria-hidden="true"></i>
+                                <i class="fab fa-cc-amex" style="font-size: 2rem; color: rgba(255,255,255,0.7);" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -2664,7 +2715,17 @@
             </div>
         </div>
     </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
         // Mobile Navigation Functionality
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileNav = document.getElementById('mobile-nav');
@@ -3056,6 +3117,7 @@
                     // Update modal content
                     destinationName.textContent = destinationData.name;
                     destinationHeroImage.src = destinationData.heroImage;
+                    destinationHeroImage.alt = destinationData.name;
                     destinationSubtitle.textContent = destinationData.subtitle;
                     destinationDescription.textContent = destinationData.description;
                     statDays.textContent = destinationData.stats.days;
@@ -3113,7 +3175,7 @@
                     <div class="premium-package-body">
                         <div class="premium-package-price">${package.price}</div>
                         <ul class="premium-package-features">
-                            ${package.features.map(feature => `<li class="included"><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+                            ${package.features.map(feature => `<li class="included"><i class="fas fa-check" aria-hidden="true"></i> ${feature}</li>`).join('')}
                         </ul>
                         <button class="premium-package-btn">Select Package</button>
                     </div>
